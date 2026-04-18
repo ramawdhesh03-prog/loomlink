@@ -38,8 +38,8 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'LoomLink <noreply@loomlink.in>',
-        to: ['hello@loomlink.in'],
+        from: 'LoomLink <onboarding@resend.dev>',
+        to: ['ramawdhesh03@gmail.com'],
         subject,
         html,
       }),
