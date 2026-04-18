@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "manufacturer": "For Manufacturers",
+    "wholesaler": "For Wholesalers",
+    "about": "About"
+  },
+  "hero": {
+    "tagline": "Manufacturer se seedha",
+    "subtagline": "Bina beech wale ke",
+    "description": "Connect directly with verified saree manufacturers from Surat & Varanasi. No middlemen. Better margins.",
+    "btn_manufacturer": "I'm a Manufacturer",
+    "btn_wholesaler": "I'm a Wholesaler"
+  },
+  "how": {
+    "title": "How It Works",
+    "step1_title": "Register",
+    "step1_desc": "Manufacturer ya wholesaler — apna account banao, 2 minutes mein.",
+    "step2_title": "Connect",
+    "step2_desc": "LoomLink verified manufacturers se directly link karata hai wholesalers ko.",
+    "step3_title": "Trade",
+    "step3_desc": "WhatsApp pe deal karo, seedha manufacturer se. No brokerage."
+  },
+  "why": {
+    "title": "Why LoomLink?",
+    "p1_title": "No Middleman",
+    "p1_desc": "Manufacturer se seedha deal — commission zero, margin zyada.",
+    "p2_title": "Tier 2/3 Reach",
+    "p2_desc": "UP, Bihar, Gujarat ke wholesalers ab Surat-Varanasi se directly source kar sakte hain.",
+    "p3_title": "Trusted Network",
+    "p3_desc": "Verified manufacturers, genuine catalogues, transparent pricing."
+  },
+  "manufacturer_form": {
+    "title": "Manufacturer Registration",
+    "name": "Your Name",
+    "business": "Business Name",
+    "city": "City",
+    "city_surat": "Surat",
+    "city_varanasi": "Varanasi",
+    "city_other": "Other",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "saree_types": "Saree Types (select all that apply)",
+    "moq": "Minimum Order Quantity (pieces)",
+    "price_range": "Price Range per Saree (₹)",
+    "catalog": "Upload Catalogue (optional, PDF/Image)",
+    "submit": "Register as Manufacturer",
+    "success": "Registration successful! We'll contact you within 24 hours.",
+    "error": "Something went wrong. Please try again."
+  },
+  "wholesaler_form": {
+    "title": "Wholesaler Registration",
+    "name": "Your Name",
+    "business": "Business Name",
+    "city": "City",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "monthly_req": "Monthly Requirement (approx. pieces)",
+    "saree_types": "Preferred Saree Types",
+    "budget": "Budget Range per Saree (₹)",
+    "submit": "Register as Wholesaler",
+    "success": "Registration successful! We'll match you with manufacturers soon.",
+    "error": "Something went wrong. Please try again."
+  },
+  "footer": {
+    "tagline": "Manufacturer se seedha — bina beech wale ke",
+    "contact": "Contact: hello@loomlink.in",
+    "rights": "© 2025 LoomLink. All rights reserved."
+  }
+}
