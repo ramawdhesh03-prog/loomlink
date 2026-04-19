@@ -94,7 +94,7 @@ export default function Home() {
             maxWidth: '560px',
             margin: '0 auto 48px',
           }}>
-            Surat aur Varanasi ke manufacturers directly connect karein UP, Bihar aur Gujarat ke wholesalers se — koi commission nahi, koi middleman nahi
+            India ke verified manufacturers se directly connect karein UP, Bihar aur Gujarat ke wholesalers se — koi commission nahi, koi middleman nahi
           </p>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
