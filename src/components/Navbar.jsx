@@ -73,7 +73,7 @@ export default function Navbar() {
         <img
           src={logo}
           alt="LoomLink"
-          style={{ height: '56px', width: 'auto' }}
+          style={{ height: '75px', width: 'auto' }}
         />
       </Link>
       <div style={styles.links}>
