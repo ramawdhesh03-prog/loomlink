@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import logo from '../assets/loomlink_logo_1.png'
 
 const styles = {
   nav: {
-    background: '#8B1A1A',
+    background: '#1B3A6B',
     padding: '0 24px',
     display: 'flex',
     alignItems: 'center',
@@ -13,15 +14,12 @@ const styles = {
     position: 'sticky',
     top: 0,
     zIndex: 100,
-    boxShadow: '0 2px 12px rgba(139,26,26,0.3)',
+    boxShadow: '0 2px 12px rgba(27,58,107,0.3)',
   },
   logo: {
-    fontFamily: "'Playfair Display', serif",
-    fontSize: '1.6rem',
-    fontWeight: 700,
-    color: '#C9A84C',
     textDecoration: 'none',
-    letterSpacing: '1px',
+    display: 'flex',
+    alignItems: 'center',
   },
   links: {
     display: 'flex',
@@ -37,21 +35,18 @@ const styles = {
     transition: 'color 0.2s',
   },
   toggleBtn: {
-    background: 'rgba(201,168,76,0.2)',
-    border: '1px solid #C9A84C',
+    background: 'rgba(232,130,26,0.2)',
+    border: '1px solid #E8821A',
     borderRadius: '20px',
     padding: '4px 14px',
     cursor: 'pointer',
-    color: '#C9A84C',
+    color: '#E8821A',
     fontSize: '0.85rem',
     fontFamily: "'Mukta', sans-serif",
     fontWeight: 600,
     transition: 'all 0.2s',
     marginLeft: '16px',
   },
-  mobileMenu: {
-    display: 'none',
-  }
 }
 
 export default function Navbar() {
@@ -64,7 +59,13 @@ export default function Navbar() {
 
   return (
     <nav style={styles.nav}>
-      <Link to="/" style={styles.logo}>LoomLink</Link>
+      <Link to="/" style={styles.logo}>
+        <img 
+          src={logo} 
+          alt="LoomLink" 
+          style={{ height: '40px', width: 'auto' }} 
+        />
+      </Link>
       <div style={styles.links}>
         <Link to="/manufacturer" style={styles.link}>{t('nav.manufacturer')}</Link>
         <Link to="/wholesaler" style={styles.link}>{t('nav.wholesaler')}</Link>

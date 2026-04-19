@@ -8,7 +8,7 @@ import WholesalerRegister from './pages/WholesalerRegister'
 export default function App() {
   return (
     <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: '#FAF7F2', color: '#2D2D2D', fontFamily: "'Mukta', sans-serif" }}>
+      <div style={{ minHeight: '100vh', background: '#F8F9FC', color: '#1A1A2E', fontFamily: "'Mukta', sans-serif" }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -8,7 +8,7 @@ export default function Home() {
     <main>
       {/* HERO */}
       <section style={{
-        background: 'linear-gradient(135deg, #8B1A1A 0%, #6B1414 50%, #4A0E0E 100%)',
+        background: 'linear-gradient(135deg, #1B3A6B 0%, #152d54 50%, #0F2040 100%)',
         padding: '100px 24px 120px',
         textAlign: 'center',
         position: 'relative',
@@ -68,8 +68,8 @@ export default function Home() {
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/manufacturer" style={{
-              background: '#C9A84C',
-              color: '#2D2D2D',
+              background: '#E8821A',
+              color: '#fff',
               padding: '16px 36px',
               borderRadius: '8px',
               fontWeight: 700,
@@ -104,7 +104,7 @@ export default function Home() {
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-          color: '#8B1A1A',
+          color: '#1B3A6B',
           textAlign: 'center',
           marginBottom: '56px',
         }}>
@@ -146,14 +146,14 @@ export default function Home() {
 
       {/* WHY LOOMLINK */}
       <section style={{
-        background: 'linear-gradient(180deg, #FAF7F2 0%, #F3EDE3 100%)',
+        background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF2F8 100%)',
         padding: '80px 24px',
       }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-            color: '#8B1A1A',
+            color: '#1B3A6B',
             textAlign: 'center',
             marginBottom: '56px',
           }}>
@@ -161,8 +161,8 @@ export default function Home() {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
             {[
-              { title: t('why.p1_title'), desc: t('why.p1_desc'), icon: '🚫', color: '#8B1A1A' },
-              { title: t('why.p2_title'), desc: t('why.p2_desc'), icon: '📍', color: '#C9A84C' },
+              { title: t('why.p1_title'), desc: t('why.p1_desc'), icon: '🚫', color: '#1B3A6B' },
+              { title: t('why.p2_title'), desc: t('why.p2_desc'), icon: '📍', color: '#E8821A' },
               { title: t('why.p3_title'), desc: t('why.p3_desc'), icon: '✅', color: '#2D7A4A' },
             ].map(point => (
               <div key={point.title} style={{
@@ -205,7 +205,7 @@ export default function Home() {
         </p>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/manufacturer" style={{
-            background: '#C9A84C', color: '#2D2D2D',
+            background: '#E8821A', color: '#fff',
             padding: '14px 32px', borderRadius: '8px',
             fontWeight: 700, fontSize: '1rem',
             textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
