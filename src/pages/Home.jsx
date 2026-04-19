@@ -14,8 +14,9 @@ import saree8 from '../assets/saree8.png'
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [currentImage, setCurrentImage] = useState(0)
+  const isHindi = i18n.language === 'hi'
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,7 +65,7 @@ export default function Home() {
             marginBottom: '24px',
             textTransform: 'uppercase',
           }}>
-            India ka #1 B2B Saree Marketplace
+            {isHindi ? 'भारत का #1 B2B साड़ी मार्केटप्लेस' : "India's #1 B2B Saree Marketplace"}
           </div>
 
           <h1 style={{
@@ -74,7 +75,7 @@ export default function Home() {
             margin: '0 0 8px',
             lineHeight: 1.2,
           }}>
-            Manufacturer se Seedha
+            {isHindi ? 'निर्माता से सीधा' : 'Direct from Manufacturer'}
           </h1>
 
           <h2 style={{
@@ -84,7 +85,7 @@ export default function Home() {
             margin: '0 0 24px',
             fontWeight: 600,
           }}>
-            Bina Beech Wale Ke
+            {isHindi ? 'बिना बीच वाले के' : 'No Middlemen'}
           </h2>
 
           <p style={{
@@ -94,7 +95,9 @@ export default function Home() {
             maxWidth: '560px',
             margin: '0 auto 48px',
           }}>
-            India ke verified manufacturers se directly connect karein UP, Bihar aur Gujarat ke wholesalers se — koi commission nahi, koi middleman nahi
+            {isHindi
+              ? 'भारत के वेरिफाइड निर्माताओं से UP, Bihar और Gujarat के थोक विक्रेताओं से सीधे जुड़ें — कोई कमीशन नहीं, कोई बिचौलिया नहीं'
+              : 'Connect directly with verified manufacturers across India — no commission, no middlemen, better margins'}
           </p>
 
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -109,7 +112,7 @@ export default function Home() {
               fontFamily: "'Mukta', sans-serif",
               boxShadow: '0 4px 20px rgba(232,130,26,0.4)',
             }}>
-              🏭 Main Manufacturer Hoon
+              {isHindi ? '🏭 मैं निर्माता हूँ' : '🏭 I am a Manufacturer'}
             </Link>
             <Link to="/wholesaler" style={{
               background: 'transparent',
@@ -122,7 +125,7 @@ export default function Home() {
               fontFamily: "'Mukta', sans-serif",
               border: '2px solid rgba(255,255,255,0.6)',
             }}>
-              🛍️ Main Wholesaler Hoon
+              {isHindi ? '🛍️ मैं थोक विक्रेता हूँ' : '🛍️ I am a Wholesaler'}
             </Link>
           </div>
 
@@ -149,10 +152,10 @@ export default function Home() {
           gap: '48px', flexWrap: 'wrap',
         }}>
           {[
-            { num: '500+', label: 'Manufacturers' },
-            { num: '1000+', label: 'Wholesalers' },
-            { num: '20+', label: 'Cities' },
-            { num: '100%', label: 'Free Registration' },
+            { num: '500+', label: isHindi ? 'निर्माता' : 'Manufacturers' },
+            { num: '1000+', label: isHindi ? 'थोक विक्रेता' : 'Wholesalers' },
+            { num: '20+', label: isHindi ? 'शहर' : 'Cities' },
+            { num: '100%', label: isHindi ? 'मुफ्त रजिस्ट्रेशन' : 'Free Registration' },
           ].map(item => (
             <div key={item.label} style={{ textAlign: 'center' }}>
               <div style={{
@@ -269,10 +272,12 @@ export default function Home() {
           color: '#FAF7F2',
           marginBottom: '12px',
         }}>
-          Abhi Join Karo — Free Registration
+          {isHindi ? 'अभी जुड़ें — मुफ्त रजिस्ट्रेशन' : 'Join Now — Free Registration'}
         </h2>
         <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '36px', fontSize: '1rem' }}>
-          Surat, Varanasi ke manufacturers aur UP/Bihar/Gujarat ke wholesalers — sab ek platform pe
+          {isHindi
+            ? 'भारत के निर्माता और थोक विक्रेता — सब एक प्लेटफॉर्म पर'
+            : 'Manufacturers and wholesalers across India — all on one platform'}
         </p>
         <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link to="/manufacturer" style={{
@@ -281,7 +286,7 @@ export default function Home() {
             fontWeight: 700, fontSize: '1rem',
             textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
           }}>
-            Manufacturer Register →
+            {isHindi ? 'निर्माता रजिस्टर →' : 'Manufacturer Register →'}
           </Link>
           <Link to="/wholesaler" style={{
             background: 'transparent', color: '#FAF7F2',
@@ -290,7 +295,7 @@ export default function Home() {
             textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
             border: '2px solid rgba(250,247,242,0.4)',
           }}>
-            Wholesaler Register →
+            {isHindi ? 'थोक विक्रेता रजिस्टर →' : 'Wholesaler Register →'}
           </Link>
         </div>
       </section>
