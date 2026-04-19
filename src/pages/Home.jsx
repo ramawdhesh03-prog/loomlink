@@ -34,7 +34,6 @@ export default function Home() {
         overflow: 'hidden',
         minHeight: '600px',
       }}>
-        {/* Slideshow Background */}
         {sareeImages.map((img, index) => (
           <div key={index} style={{
             position: 'absolute', inset: 0,
@@ -46,13 +45,11 @@ export default function Home() {
           }} />
         ))}
 
-        {/* Dark Blue Overlay */}
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(135deg, rgba(27,58,107,0.82) 0%, rgba(15,32,64,0.88) 100%)',
         }} />
 
-        {/* Content */}
         <div style={{ position: 'relative', maxWidth: '720px', margin: '0 auto' }}>
           <div style={{
             display: 'inline-block',
@@ -79,6 +76,7 @@ export default function Home() {
           }}>
             Manufacturer se Seedha
           </h1>
+
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
@@ -88,6 +86,7 @@ export default function Home() {
           }}>
             Bina Beech Wale Ke
           </h2>
+
           <p style={{
             color: 'rgba(255,255,255,0.85)',
             fontSize: '1.1rem',
@@ -118,4 +117,183 @@ export default function Home() {
               padding: '16px 36px',
               borderRadius: '8px',
               fontWeight: 700,
-              fontS
+              fontSize: '1rem',
+              textDecoration: 'none',
+              fontFamily: "'Mukta', sans-serif",
+              border: '2px solid rgba(255,255,255,0.6)',
+            }}>
+              🛍️ Main Wholesaler Hoon
+            </Link>
+          </div>
+
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '40px' }}>
+            {sareeImages.map((_, index) => (
+              <div key={index} onClick={() => setCurrentImage(index)} style={{
+                width: index === currentImage ? '24px' : '8px',
+                height: '8px',
+                borderRadius: '4px',
+                background: index === currentImage ? '#F5A623' : 'rgba(255,255,255,0.4)',
+                cursor: 'pointer',
+                transition: 'all 0.3s',
+              }} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRUST SECTION */}
+      <section style={{ background: '#1B3A6B', padding: '32px 24px' }}>
+        <div style={{
+          maxWidth: '900px', margin: '0 auto',
+          display: 'flex', justifyContent: 'center',
+          gap: '48px', flexWrap: 'wrap',
+        }}>
+          {[
+            { num: '500+', label: 'Manufacturers' },
+            { num: '1000+', label: 'Wholesalers' },
+            { num: '20+', label: 'Cities' },
+            { num: '100%', label: 'Free Registration' },
+          ].map(item => (
+            <div key={item.label} style={{ textAlign: 'center' }}>
+              <div style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '2rem', fontWeight: 700,
+                color: '#F5A623',
+              }}>{item.num}</div>
+              <div style={{
+                color: 'rgba(255,255,255,0.8)',
+                fontSize: '0.9rem',
+                fontFamily: "'Mukta', sans-serif",
+              }}>{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section style={{ padding: '80px 24px', maxWidth: '1100px', margin: '0 auto' }}>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+          color: '#1B3A6B',
+          textAlign: 'center',
+          marginBottom: '56px',
+        }}>
+          {t('how.title')}
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
+          {[
+            { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
+            { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
+            { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
+          ].map(step => (
+            <div key={step.num} style={{
+              background: '#fff',
+              borderRadius: '16px',
+              padding: '36px 28px',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
+              border: '1px solid rgba(27,58,107,0.08)',
+              position: 'relative',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                position: 'absolute', top: '-16px', right: '-8px',
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '5rem', fontWeight: 700,
+                color: 'rgba(27,58,107,0.05)',
+                lineHeight: 1,
+              }}>{step.num}</div>
+              <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
+              <h3 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1.3rem', color: '#1B3A6B',
+                marginBottom: '10px',
+              }}>{step.title}</h3>
+              <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHY LOOMLINK */}
+      <section style={{
+        background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF2F8 100%)',
+        padding: '80px 24px',
+      }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+            color: '#1B3A6B',
+            textAlign: 'center',
+            marginBottom: '56px',
+          }}>
+            {t('why.title')}
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
+            {[
+              { title: t('why.p1_title'), desc: t('why.p1_desc'), icon: '🚫', color: '#1B3A6B' },
+              { title: t('why.p2_title'), desc: t('why.p2_desc'), icon: '📍', color: '#E8821A' },
+              { title: t('why.p3_title'), desc: t('why.p3_desc'), icon: '✅', color: '#2D7A4A' },
+            ].map(point => (
+              <div key={point.title} style={{
+                background: '#fff',
+                borderRadius: '16px',
+                padding: '36px 28px',
+                borderTop: `4px solid ${point.color}`,
+                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+              }}>
+                <div style={{ fontSize: '2rem', marginBottom: '14px' }}>{point.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '1.25rem',
+                  color: '#2D2D2D',
+                  marginBottom: '10px',
+                }}>{point.title}</h3>
+                <p style={{ color: '#666', lineHeight: 1.7, fontSize: '0.97rem' }}>{point.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA BOTTOM */}
+      <section style={{
+        background: '#1B3A6B',
+        padding: '64px 24px',
+        textAlign: 'center',
+      }}>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+          color: '#FAF7F2',
+          marginBottom: '12px',
+        }}>
+          Abhi Join Karo — Free Registration
+        </h2>
+        <p style={{ color: 'rgba(250,247,242,0.7)', marginBottom: '36px', fontSize: '1rem' }}>
+          Surat, Varanasi ke manufacturers aur UP/Bihar/Gujarat ke wholesalers — sab ek platform pe
+        </p>
+        <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+          <Link to="/manufacturer" style={{
+            background: '#E8821A', color: '#fff',
+            padding: '14px 32px', borderRadius: '8px',
+            fontWeight: 700, fontSize: '1rem',
+            textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
+          }}>
+            Manufacturer Register →
+          </Link>
+          <Link to="/wholesaler" style={{
+            background: 'transparent', color: '#FAF7F2',
+            padding: '14px 32px', borderRadius: '8px',
+            fontWeight: 700, fontSize: '1rem',
+            textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
+            border: '2px solid rgba(250,247,242,0.4)',
+          }}>
+            Wholesaler Register →
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
+}
