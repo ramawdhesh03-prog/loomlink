@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import logo from '../assets/loomlink_logo_1.png'
+import logo from '../assets/loomlink_logo_transparent.png'
 
 const styles = {
   nav: {
