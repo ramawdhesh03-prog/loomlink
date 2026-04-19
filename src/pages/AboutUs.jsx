@@ -39,37 +39,6 @@ const AboutUs = () => {
           </p>
         </div>
 
-        {/* Founder Card */}
-        <div style={{
-          background: 'white',
-          borderRadius: '16px',
-          padding: '40px',
-          marginBottom: '30px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
-        }}>
-          <h2 style={{ color: '#1a237e', fontSize: '1.6rem', marginBottom: '24px' }}>👤 Founder</h2>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flexWrap: 'wrap' }}>
-            <div style={{
-              width: '80px', height: '80px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #1a237e, #3949ab)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              color: 'white', fontSize: '1.8rem', fontWeight: '700',
-              flexShrink: 0
-            }}>
-              RC
-            </div>
-            <div>
-              <h3 style={{ color: '#1a237e', fontSize: '1.3rem', marginBottom: '4px' }}>Ram Awdhesh Chauhan</h3>
-              <p style={{ color: '#888', fontSize: '0.95rem', marginBottom: '8px' }}>Founder & CEO, LoomLink</p>
-              <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: '1.6' }}>
-                Mechanical & Solar EPC Engineer with a vision to digitize India's saree trade. 
-                LoomLink ke through, Ram saree industry ke manufacturers aur wholesalers ko ek powerful B2B network se connect kar rahe hain.
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Info Grid */}
         <div style={{
           display: 'grid',
