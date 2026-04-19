@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 
-const SAREE_TYPES = ['Silk', 'Cotton', 'Banarasi', 'Georgette']
+const SAREE_TYPES = [
+  'Banarasi Silk', 'Kanjivaram Silk', 'Georgette', 'Chiffon',
+  'Cotton', 'Linen', 'Tussar Silk', 'Chanderi', 'Patola',
+  'Bandhani', 'Leheriya', 'Net', 'Crepe', 'Organza'
+]
 
 const inputStyle = {
   width: '100%',
@@ -29,13 +33,13 @@ const labelStyle = {
 export default function ManufacturerRegister() {
   const { t } = useTranslation()
   const [form, setForm] = useState({
-    name: '', business: '', city: 'Surat',
+    name: '', business: '', city: '',
     phone: '', whatsapp: '',
     sareeTypes: [],
     moq: '', priceRange: '',
   })
   const [catalog, setCatalog] = useState(null)
-  const [status, setStatus] = useState(null) // 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState(null)
 
   const handleChange = e => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -57,7 +61,6 @@ export default function ManufacturerRegister() {
     }
     setStatus('loading')
     try {
-      // Upload catalog if present
       let catalogUrl = null
       if (catalog) {
         const fileExt = catalog.name.split('.').pop()
@@ -70,7 +73,6 @@ export default function ManufacturerRegister() {
         }
       }
 
-      // Insert into Supabase
       const { error: dbError } = await supabase.from('manufacturers').insert([{
         name: form.name,
         business_name: form.business,
@@ -86,7 +88,6 @@ export default function ManufacturerRegister() {
 
       if (dbError) throw dbError
 
-      // Send email via Resend (Vercel Function)
       await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -99,7 +100,7 @@ export default function ManufacturerRegister() {
       })
 
       setStatus('success')
-      setForm({ name: '', business: '', city: 'Surat', phone: '', whatsapp: '', sareeTypes: [], moq: '', priceRange: '' })
+      setForm({ name: '', business: '', city: '', phone: '', whatsapp: '', sareeTypes: [], moq: '', priceRange: '' })
     } catch (err) {
       console.error(err)
       setStatus('error')
@@ -150,6 +151,7 @@ export default function ManufacturerRegister() {
         )}
 
         <div style={{ display: 'grid', gap: '20px' }}>
+
           {/* Name + Business */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
@@ -162,14 +164,16 @@ export default function ManufacturerRegister() {
             </div>
           </div>
 
-          {/* City */}
+          {/* City - Free Text */}
           <div>
             <label style={labelStyle}>{t('manufacturer_form.city')}</label>
-            <select name="city" value={form.city} onChange={handleChange} style={inputStyle}>
-              <option value="Surat">{t('manufacturer_form.city_surat')}</option>
-              <option value="Varanasi">{t('manufacturer_form.city_varanasi')}</option>
-              <option value="Other">{t('manufacturer_form.city_other')}</option>
-            </select>
+            <input
+              name="city"
+              value={form.city}
+              onChange={handleChange}
+              style={inputStyle}
+              placeholder="Apna shehar likhein — jaise Surat, Varanasi, Mumbai..."
+            />
           </div>
 
           {/* Phone + WhatsApp */}
