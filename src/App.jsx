@@ -4,6 +4,8 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import ManufacturerRegister from './pages/ManufacturerRegister'
 import WholesalerRegister from './pages/WholesalerRegister'
+import AboutUs from './pages/AboutUs'
+import ContactUs from './pages/ContactUs'
 
 export default function App() {
   return (
@@ -14,6 +16,8 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/manufacturer" element={<ManufacturerRegister />} />
           <Route path="/wholesaler" element={<WholesalerRegister />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
         </Routes>
         <Footer />
       </div>
