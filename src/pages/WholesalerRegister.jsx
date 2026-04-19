@@ -2,7 +2,11 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
 
-const SAREE_TYPES = ['Silk', 'Cotton', 'Banarasi', 'Georgette']
+const SAREE_TYPES = [
+  'Banarasi Silk', 'Kanjivaram Silk', 'Georgette', 'Chiffon',
+  'Cotton', 'Linen', 'Tussar Silk', 'Chanderi', 'Patola',
+  'Bandhani', 'Leheriya', 'Net', 'Crepe', 'Organza'
+]
 
 const inputStyle = {
   width: '100%',
@@ -140,7 +144,13 @@ export default function WholesalerRegister() {
 
           <div>
             <label style={labelStyle}>{t('wholesaler_form.city')}</label>
-            <input name="city" value={form.city} onChange={handleChange} style={inputStyle} placeholder="e.g. Lucknow, Patna, Ahmedabad" />
+            <input
+              name="city"
+              value={form.city}
+              onChange={handleChange}
+              style={inputStyle}
+              placeholder="Apna shehar likhein — jaise Lucknow, Patna, Ahmedabad..."
+            />
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
