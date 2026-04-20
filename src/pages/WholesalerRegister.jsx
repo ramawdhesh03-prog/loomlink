@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { supabase } from '../lib/supabase'
+import { useNavigate } from 'react-router-dom'
 
 const SAREE_TYPES = [
   'Banarasi Silk', 'Kanjivaram Silk', 'Georgette', 'Chiffon',
@@ -21,6 +22,7 @@ const labelStyle = {
 
 export default function WholesalerRegister() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     name: '', business: '', city: '',
     phone: '', whatsapp: '',
@@ -51,17 +53,13 @@ export default function WholesalerRegister() {
     }
     setStatus('loading')
     try {
-      // Supabase Auth mein account banao
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: form.email,
         password: form.password,
-        options: {
-          data: { role: 'wholesaler' }
-        }
+        options: { data: { role: 'wholesaler' } }
       })
       if (authError) throw authError
 
-      // Database mein data save karo
       const { error } = await supabase.from('wholesalers').insert([{
         user_id: authData.user.id,
         name: form.name,
@@ -76,17 +74,11 @@ export default function WholesalerRegister() {
       }])
       if (error) throw error
 
-      await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          type: 'wholesaler', name: form.name,
-          business: form.business, phone: form.phone,
-        }),
-      })
-
       setStatus('success')
       setForm({ name: '', business: '', city: '', phone: '', whatsapp: '', monthlyReq: '', sareeTypes: [], budget: '', email: '', password: '' })
+
+      setTimeout(() => navigate('/login'), 3000)
+
     } catch (err) {
       console.error(err)
       setStatus('error')
@@ -95,6 +87,91 @@ export default function WholesalerRegister() {
 
   return (
     <main style={{ padding: '60px 24px', maxWidth: '680px', margin: '0 auto' }}>
+
+      {/* SUCCESS POPUP */}
+      {status === 'success' && (
+        <div style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            background: 'white', borderRadius: '20px',
+            padding: '48px 40px', textAlign: 'center',
+            maxWidth: '400px', width: '90%',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{ fontSize: '4rem', marginBottom: '16px' }}>🎉</div>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              color: '#2D7A4A', fontSize: '1.6rem', marginBottom: '12px'
+            }}>
+              Registration Successful!
+            </h2>
+            <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              Welcome to LoomLink! Ab login karke apna dashboard access karo.
+            </p>
+            <div style={{
+              background: '#f0faf4', borderRadius: '10px',
+              padding: '12px', color: '#2D7A4A', fontSize: '0.9rem', fontWeight: 600
+            }}>
+              ⏳ 3 seconds mein login page pe redirect ho rahe hain...
+            </div>
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                marginTop: '20px', background: '#1B3A6B', color: 'white',
+                border: 'none', padding: '12px 32px', borderRadius: '8px',
+                fontSize: '1rem', fontWeight: 700, cursor: 'pointer',
+                fontFamily: "'Mukta', sans-serif", width: '100%'
+              }}
+            >
+              Login Now →
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ERROR POPUP */}
+      {status === 'error' && (
+        <div style={{
+          position: 'fixed', inset: 0,
+          background: 'rgba(0,0,0,0.6)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div style={{
+            background: 'white', borderRadius: '20px',
+            padding: '48px 40px', textAlign: 'center',
+            maxWidth: '400px', width: '90%',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.3)'
+          }}>
+            <div style={{ fontSize: '4rem', marginBottom: '16px' }}>❌</div>
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              color: '#8B1A1A', fontSize: '1.6rem', marginBottom: '12px'
+            }}>
+              Registration Failed!
+            </h2>
+            <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              Email already registered hai ya koi aur error aaya. Please try again.
+            </p>
+            <button
+              onClick={() => setStatus(null)}
+              style={{
+                background: '#8B1A1A', color: 'white', border: 'none',
+                padding: '12px 32px', borderRadius: '8px',
+                fontSize: '1rem', fontWeight: 700, cursor: 'pointer',
+                fontFamily: "'Mukta', sans-serif", width: '100%'
+              }}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      )}
+
       <div style={{
         background: 'linear-gradient(135deg, #C9A84C, #A8873D)',
         borderRadius: '16px 16px 0 0', padding: '32px 36px',
@@ -109,20 +186,8 @@ export default function WholesalerRegister() {
       </div>
 
       <div style={{ background: '#fff', borderRadius: '0 0 16px 16px', padding: '36px', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
-        {status === 'success' && (
-          <div style={{ background: '#f0faf4', border: '1px solid #2D7A4A', color: '#2D7A4A', padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600 }}>
-            ✅ Registration successful! Ab login karo apne dashboard ke liye.
-          </div>
-        )}
-        {status === 'error' && (
-          <div style={{ background: '#fff5f5', border: '1px solid #8B1A1A', color: '#8B1A1A', padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600 }}>
-            ❌ Kuch galat hua. Email already registered ho sakta hai.
-          </div>
-        )}
-
         <div style={{ display: 'grid', gap: '20px' }}>
 
-          {/* Name + Business */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.name')} *</label>
@@ -134,13 +199,11 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          {/* City */}
           <div>
             <label style={labelStyle}>{t('wholesaler_form.city')}</label>
             <input name="city" value={form.city} onChange={handleChange} style={inputStyle} placeholder="Apna shehar likhein — jaise Lucknow, Patna, Ahmedabad..." />
           </div>
 
-          {/* Phone + WhatsApp */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.phone')} *</label>
@@ -152,7 +215,6 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          {/* Email + Password */}
           <div style={{ background: '#f8f9fa', borderRadius: '12px', padding: '20px', border: '1px solid #e0e0e0' }}>
             <p style={{ margin: '0 0 16px', fontWeight: 600, color: '#1B3A6B', fontSize: '0.95rem' }}>
               🔐 Login Details — Dashboard access ke liye
@@ -169,7 +231,6 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          {/* Saree Types */}
           <div>
             <label style={labelStyle}>{t('wholesaler_form.saree_types')}</label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '4px' }}>
@@ -188,7 +249,6 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          {/* Monthly Req + Budget */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.monthly_req')}</label>
@@ -200,7 +260,6 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          {/* Submit */}
           <button onClick={handleSubmit} disabled={status === 'loading'} style={{
             background: status === 'loading' ? '#aaa' : '#C9A84C',
             color: '#2D2D2D', padding: '16px', border: 'none',
