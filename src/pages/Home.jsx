@@ -56,9 +56,9 @@ export default function Home() {
           }} />
         ))}
         <div style={{
-          position: 'absolute', inset: 0,
-          background: 'linear-gradient(135deg, rgba(27,58,107,0.82) 0%, rgba(15,32,64,0.88) 100%)',
-        }} />
+  position: 'absolute', inset: 0,
+  background: 'linear-gradient(to right, rgba(15,32,64,0.93) 0%, rgba(15,32,64,0.90) 35%, rgba(27,58,107,0.45) 68%, rgba(27,58,107,0.12) 100%)',
+}} />
         <div style={{ position: 'relative', maxWidth: '720px', margin: '0 auto' }}>
           <div style={{
             display: 'inline-block',
