@@ -205,6 +205,7 @@ export default function Home() {
                 fontSize: '5rem', fontWeight: 700,
                 color: 'rgba(27,58,107,0.05)',
                 lineHeight: 1,
+                display: 'none',
               }}>{step.num}</div>
               <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
               <h3 style={{
