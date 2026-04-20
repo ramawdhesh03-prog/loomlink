@@ -9,7 +9,7 @@ export default function Footer() {
       background: '#2D2D2D',
       color: '#FAF7F2',
       padding: '48px 24px 24px',
-      marginTop: '80px',
+      marginTop: '0px',
     }}>
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px', marginBottom: '40px' }}>
