@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabase'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -34,22 +34,15 @@ export default function Login() {
   return (
     <main style={{ padding: '80px 24px', maxWidth: '440px', margin: '0 auto' }}>
       <div style={{
-        background: '#fff',
-        borderRadius: '16px',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-        overflow: 'hidden'
+        background: '#fff', borderRadius: '16px',
+        boxShadow: '0 8px 32px rgba(0,0,0,0.1)', overflow: 'hidden'
       }}>
         <div style={{
           background: 'linear-gradient(135deg, #1B3A6B, #2D5AA0)',
-          padding: '32px 36px',
-          color: 'white',
-          textAlign: 'center'
+          padding: '32px 36px', color: 'white', textAlign: 'center'
         }}>
           <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🔐</div>
-          <h1 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: '1.8rem', margin: 0
-          }}>Login</h1>
+          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', margin: 0 }}>Login</h1>
           <p style={{ opacity: 0.8, marginTop: '8px', fontSize: '0.95rem' }}>
             LoomLink account mein login karo
           </p>
@@ -71,15 +64,12 @@ export default function Login() {
               Email Address
             </label>
             <input
-              type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              type="email" value={email} onChange={e => setEmail(e.target.value)}
               placeholder="aapka@email.com"
               style={{
                 width: '100%', padding: '12px 16px', borderRadius: '8px',
                 border: '1.5px solid #ddd', fontSize: '1rem',
-                fontFamily: "'Mukta', sans-serif", outline: 'none',
-                boxSizing: 'border-box'
+                fontFamily: "'Mukta', sans-serif", outline: 'none', boxSizing: 'border-box'
               }}
             />
           </div>
@@ -89,23 +79,19 @@ export default function Login() {
               Password
             </label>
             <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
+              type="password" value={password} onChange={e => setPassword(e.target.value)}
               placeholder="••••••••"
               onKeyDown={e => e.key === 'Enter' && handleLogin()}
               style={{
                 width: '100%', padding: '12px 16px', borderRadius: '8px',
                 border: '1.5px solid #ddd', fontSize: '1rem',
-                fontFamily: "'Mukta', sans-serif", outline: 'none',
-                boxSizing: 'border-box'
+                fontFamily: "'Mukta', sans-serif", outline: 'none', boxSizing: 'border-box'
               }}
             />
           </div>
 
           <button
-            onClick={handleLogin}
-            disabled={status === 'loading'}
+            onClick={handleLogin} disabled={status === 'loading'}
             style={{
               width: '100%', background: status === 'loading' ? '#aaa' : '#1B3A6B',
               color: 'white', border: 'none', padding: '14px',
@@ -118,13 +104,13 @@ export default function Login() {
 
           <p style={{ textAlign: 'center', marginTop: '20px', color: '#888', fontSize: '0.9rem' }}>
             Account nahi hai?{' '}
-            <a href="/manufacturer" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
+            <Link to="/manufacturer" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
               Manufacturer Register
-            </a>
+            </Link>
             {' '}ya{' '}
-            <a href="/wholesaler" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
+            <Link to="/wholesaler" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
               Wholesaler Register
-            </a>
+            </Link>
           </p>
         </div>
       </div>
