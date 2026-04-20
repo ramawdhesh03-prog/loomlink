@@ -17,25 +17,13 @@ export default function WholesalerDashboard() {
     'Bandhani', 'Leheriya', 'Net', 'Crepe', 'Organza'
   ]
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  useEffect(() => { fetchData() }, [])
 
   const fetchData = async () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { navigate('/login'); return }
-
-    const { data: profileData } = await supabase
-      .from('wholesalers')
-      .select('*')
-      .eq('user_id', user.id)
-      .single()
-
-    const { data: mfgData } = await supabase
-      .from('manufacturers')
-      .select('*')
-      .order('created_at', { ascending: false })
-
+    const { data: profileData } = await supabase.from('wholesalers').select('*').eq('user_id', user.id).single()
+    const { data: mfgData } = await supabase.from('manufacturers').select('*').order('created_at', { ascending: false })
     setProfile(profileData)
     setForm(profileData || {})
     setManufacturers(mfgData || [])
@@ -43,19 +31,11 @@ export default function WholesalerDashboard() {
   }
 
   const handleSave = async () => {
-    const { error } = await supabase
-      .from('wholesalers')
-      .update({
-        name: form.name,
-        business_name: form.business_name,
-        city: form.city,
-        whatsapp: form.whatsapp,
-        monthly_requirement: form.monthly_requirement,
-        budget_range: form.budget_range,
-        saree_types: form.saree_types,
-      })
-      .eq('id', profile.id)
-
+    const { error } = await supabase.from('wholesalers').update({
+      name: form.name, business_name: form.business_name, city: form.city,
+      whatsapp: form.whatsapp, monthly_requirement: form.monthly_requirement,
+      budget_range: form.budget_range, saree_types: form.saree_types,
+    }).eq('id', profile.id)
     if (!error) { setProfile(form); setEditing(false) }
   }
 
@@ -68,17 +48,11 @@ export default function WholesalerDashboard() {
     const current = form.saree_types || []
     setForm(prev => ({
       ...prev,
-      saree_types: current.includes(type)
-        ? current.filter(t => t !== type)
-        : [...current, type]
+      saree_types: current.includes(type) ? current.filter(t => t !== type) : [...current, type]
     }))
   }
 
-  if (loading) return (
-    <div style={{ textAlign: 'center', padding: '100px', color: '#1B3A6B', fontSize: '1.2rem' }}>
-      Loading...
-    </div>
-  )
+  if (loading) return <div style={{ textAlign: 'center', padding: '100px', color: '#1B3A6B' }}>Loading...</div>
 
   const inputStyle = {
     width: '100%', padding: '10px 14px', borderRadius: '8px',
@@ -88,22 +62,20 @@ export default function WholesalerDashboard() {
 
   const tabStyle = (tab) => ({
     padding: '10px 24px', borderRadius: '8px', cursor: 'pointer',
-    fontWeight: 600, fontFamily: "'Mukta', sans-serif", fontSize: '0.95rem',
+    fontWeight: 600, fontFamily: "'Mukta', sans-serif",
     background: activeTab === tab ? '#1B3A6B' : 'transparent',
     color: activeTab === tab ? 'white' : '#1B3A6B',
-    border: `2px solid #1B3A6B`, transition: 'all 0.2s'
+    border: '2px solid #1B3A6B', transition: 'all 0.2s'
   })
 
   return (
     <main style={{ padding: '40px 24px', maxWidth: '900px', margin: '0 auto' }}>
 
-      {/* Header */}
       <div style={{
         background: 'linear-gradient(135deg, #C9A84C, #A8873D)',
         borderRadius: '16px', padding: '28px 32px',
         display: 'flex', justifyContent: 'space-between',
-        alignItems: 'center', marginBottom: '24px',
-        flexWrap: 'wrap', gap: '16px'
+        alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px'
       }}>
         <div>
           <div style={{ fontSize: '1.8rem', marginBottom: '4px' }}>🛍️</div>
@@ -115,35 +87,21 @@ export default function WholesalerDashboard() {
           </p>
         </div>
         <button onClick={handleLogout} style={{
-          background: 'rgba(0,0,0,0.15)', color: '#2D2D2D',
-          border: 'none', padding: '10px 20px',
-          borderRadius: '8px', cursor: 'pointer',
+          background: 'rgba(0,0,0,0.15)', color: '#2D2D2D', border: 'none',
+          padding: '10px 20px', borderRadius: '8px', cursor: 'pointer',
           fontFamily: "'Mukta', sans-serif", fontWeight: 600
-        }}>
-          Logout
-        </button>
+        }}>Logout</button>
       </div>
 
-      {/* Tabs */}
       <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
-        <button style={tabStyle('profile')} onClick={() => setActiveTab('profile')}>
-          👤 Mera Profile
-        </button>
-        <button style={tabStyle('browse')} onClick={() => setActiveTab('browse')}>
-          🏭 Manufacturers Browse
-        </button>
+        <button style={tabStyle('profile')} onClick={() => setActiveTab('profile')}>👤 Mera Profile</button>
+        <button style={tabStyle('browse')} onClick={() => setActiveTab('browse')}>🏭 Manufacturers Browse</button>
       </div>
 
-      {/* Profile Tab */}
       {activeTab === 'profile' && (
-        <div style={{
-          background: '#fff', borderRadius: '16px',
-          padding: '32px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
-        }}>
+        <div style={{ background: '#fff', borderRadius: '16px', padding: '32px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-            <h2 style={{ color: '#1B3A6B', fontFamily: "'Playfair Display', serif", margin: 0 }}>
-              📋 Mera Profile
-            </h2>
+            <h2 style={{ color: '#1B3A6B', fontFamily: "'Playfair Display', serif", margin: 0 }}>📋 Mera Profile</h2>
             {!editing ? (
               <button onClick={() => setEditing(true)} style={{
                 background: '#1B3A6B', color: 'white', border: 'none',
@@ -180,11 +138,7 @@ export default function WholesalerDashboard() {
                   {field.label}
                 </label>
                 {editing ? (
-                  <input
-                    value={form[field.key] || ''}
-                    onChange={e => setForm(prev => ({ ...prev, [field.key]: e.target.value }))}
-                    style={inputStyle}
-                  />
+                  <input value={form[field.key] || ''} onChange={e => setForm(prev => ({ ...prev, [field.key]: e.target.value }))} style={inputStyle} />
                 ) : (
                   <div style={{ padding: '10px 14px', background: '#f8f9fa', borderRadius: '8px', fontSize: '0.95rem' }}>
                     {profile?.[field.key] || '—'}
@@ -224,7 +178,6 @@ export default function WholesalerDashboard() {
         </div>
       )}
 
-      {/* Browse Manufacturers Tab */}
       {activeTab === 'browse' && (
         <div>
           <h2 style={{ color: '#1B3A6B', fontFamily: "'Playfair Display', serif", marginBottom: '20px' }}>
@@ -238,8 +191,7 @@ export default function WholesalerDashboard() {
             ) : manufacturers.map(mfg => (
               <div key={mfg.id} style={{
                 background: '#fff', borderRadius: '16px', padding: '24px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                borderTop: '4px solid #8B1A1A'
+                boxShadow: '0 4px 20px rgba(0,0,0,0.08)', borderTop: '4px solid #8B1A1A'
               }}>
                 <h3 style={{ color: '#1B3A6B', fontFamily: "'Playfair Display', serif", marginBottom: '4px' }}>
                   {mfg.business_name}
@@ -257,16 +209,11 @@ export default function WholesalerDashboard() {
                   <div>📦 MOQ: {mfg.moq || '—'} pieces</div>
                   <div>💰 Price: {mfg.price_range || '—'}</div>
                 </div>
-                
-                  href={`https://wa.me/91${mfg.whatsapp || mfg.phone}?text=Hi%20${encodeURIComponent(mfg.business_name)}%2C%20I%20found%20you%20on%20LoomLink%20and%20want%20to%20discuss%20saree%20orders.`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    display: 'block', background: '#25D366', color: 'white',
-                    textAlign: 'center', padding: '10px', borderRadius: '8px',
-                    textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem'
-                  }}
-                >
+                <a href={`https://wa.me/91${mfg.whatsapp || mfg.phone}?text=Hi%20${encodeURIComponent(mfg.business_name)}%2C%20I%20found%20you%20on%20LoomLink`} target="_blank" rel="noopener noreferrer" style={{
+                  display: 'block', background: '#25D366', color: 'white',
+                  textAlign: 'center', padding: '10px', borderRadius: '8px',
+                  textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem'
+                }}>
                   💬 WhatsApp pe Contact Karo
                 </a>
               </div>
