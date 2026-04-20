@@ -164,76 +164,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
-      <section style={{ padding: '80px 24px', maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-          color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
-        }}>
-          {t('how.title')}
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
-          {[
-            { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
-            { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
-            { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
-          ].map(step => (
-            <div key={step.num} style={{
-              background: '#fff', borderRadius: '16px',
-              padding: '36px 28px',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
-              border: '1px solid rgba(27,58,107,0.08)',
-              position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
-              <h3 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px',
-              }}>{step.title}</h3>
-              <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHY LOOMLINK */}
-      <section style={{
-        background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF2F8 100%)',
-        padding: '80px 24px',
-      }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <h2 style={{
-            fontFamily: "'Playfair Display', serif",
-            fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-            color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
-          }}>
-            {t('why.title')}
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
-            {[
-              { title: t('why.p1_title'), desc: t('why.p1_desc'), icon: '🚫', color: '#1B3A6B' },
-              { title: t('why.p2_title'), desc: t('why.p2_desc'), icon: '📍', color: '#E8821A' },
-              { title: t('why.p3_title'), desc: t('why.p3_desc'), icon: '✅', color: '#2D7A4A' },
-            ].map(point => (
-              <div key={point.title} style={{
-                background: '#fff', borderRadius: '16px',
-                padding: '36px 28px',
-                borderTop: `4px solid ${point.color}`,
-                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-              }}>
-                <div style={{ fontSize: '2rem', marginBottom: '14px' }}>{point.icon}</div>
-                <h3 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: '1.25rem', color: '#2D2D2D', marginBottom: '10px',
-                }}>{point.title}</h3>
-                <p style={{ color: '#666', lineHeight: 1.7, fontSize: '0.97rem' }}>{point.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FEATURED LISTINGS */}
       <section style={{ padding: '80px 24px', background: '#FAF7F2' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -327,7 +257,7 @@ export default function Home() {
                   }}>
                     {isHindi ? item.moqHi : item.moqEn}
                   </div>
-                  <a
+                  
                     href={`https://wa.me/${item.wa}?text=${encodeURIComponent(
                       isHindi
                         ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।`
@@ -360,6 +290,76 @@ export default function Home() {
             }}>
               {t('listings.view_all')}
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section style={{ padding: '80px 24px', maxWidth: '1100px', margin: '0 auto' }}>
+        <h2 style={{
+          fontFamily: "'Playfair Display', serif",
+          fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+          color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
+        }}>
+          {t('how.title')}
+        </h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
+          {[
+            { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
+            { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
+            { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
+          ].map(step => (
+            <div key={step.num} style={{
+              background: '#fff', borderRadius: '16px',
+              padding: '36px 28px',
+              boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
+              border: '1px solid rgba(27,58,107,0.08)',
+              position: 'relative', overflow: 'hidden',
+            }}>
+              <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
+              <h3 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px',
+              }}>{step.title}</h3>
+              <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* WHY LOOMLINK */}
+      <section style={{
+        background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF2F8 100%)',
+        padding: '80px 24px',
+      }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+            color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
+          }}>
+            {t('why.title')}
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '28px' }}>
+            {[
+              { title: t('why.p1_title'), desc: t('why.p1_desc'), icon: '🚫', color: '#1B3A6B' },
+              { title: t('why.p2_title'), desc: t('why.p2_desc'), icon: '📍', color: '#E8821A' },
+              { title: t('why.p3_title'), desc: t('why.p3_desc'), icon: '✅', color: '#2D7A4A' },
+            ].map(point => (
+              <div key={point.title} style={{
+                background: '#fff', borderRadius: '16px',
+                padding: '36px 28px',
+                borderTop: `4px solid ${point.color}`,
+                boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+              }}>
+                <div style={{ fontSize: '2rem', marginBottom: '14px' }}>{point.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '1.25rem', color: '#2D2D2D', marginBottom: '10px',
+                }}>{point.title}</h3>
+                <p style={{ color: '#666', lineHeight: 1.7, fontSize: '0.97rem' }}>{point.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
