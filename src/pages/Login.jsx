@@ -10,7 +10,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     if (!email || !password) {
-      alert('Email aur password dono bharein!')
+      alert('Please enter email and password!')
       return
     }
     setStatus('loading')
@@ -44,7 +44,7 @@ export default function Login() {
           <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🔐</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', margin: 0 }}>Login</h1>
           <p style={{ opacity: 0.8, marginTop: '8px', fontSize: '0.95rem' }}>
-            LoomLink account mein login karo
+            Login to your LoomLink account
           </p>
         </div>
 
@@ -55,7 +55,7 @@ export default function Login() {
               padding: '12px 16px', borderRadius: '8px', marginBottom: '20px',
               fontWeight: 600, fontSize: '0.9rem'
             }}>
-              ❌ Email ya password galat hai!
+              ❌ Incorrect email or password!
             </div>
           )}
 
@@ -65,7 +65,7 @@ export default function Login() {
             </label>
             <input
               type="email" value={email} onChange={e => setEmail(e.target.value)}
-              placeholder="aapka@email.com"
+              placeholder="your@email.com"
               style={{
                 width: '100%', padding: '12px 16px', borderRadius: '8px',
                 border: '1.5px solid #ddd', fontSize: '1rem',
@@ -99,15 +99,15 @@ export default function Login() {
               fontFamily: "'Mukta', sans-serif", cursor: status === 'loading' ? 'not-allowed' : 'pointer'
             }}
           >
-            {status === 'loading' ? 'Login ho raha hai...' : 'Login →'}
+            {status === 'loading' ? 'Logging in...' : 'Login →'}
           </button>
 
           <p style={{ textAlign: 'center', marginTop: '20px', color: '#888', fontSize: '0.9rem' }}>
-            Account nahi hai?{' '}
+            Don't have an account?{' '}
             <Link to="/manufacturer" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
               Manufacturer Register
             </Link>
-            {' '}ya{' '}
+            {' '}or{' '}
             <Link to="/wholesaler" style={{ color: '#1B3A6B', fontWeight: 600, textDecoration: 'none' }}>
               Wholesaler Register
             </Link>
