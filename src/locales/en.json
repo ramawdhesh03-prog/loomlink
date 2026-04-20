@@ -34,9 +34,6 @@
     "name": "Your Name",
     "business": "Business Name",
     "city": "City",
-    "city_surat": "Surat",
-    "city_varanasi": "Varanasi",
-    "city_other": "Other",
     "phone": "Phone Number",
     "whatsapp": "WhatsApp Number",
     "saree_types": "Saree Types (select all that apply)",
@@ -44,7 +41,7 @@
     "price_range": "Price Range per Saree (₹)",
     "catalog": "Upload Catalogue (optional, PDF/Image)",
     "submit": "Register as Manufacturer",
-    "success": "Registration successful! We will contact you within 24 hours.",
+    "success": "Registration successful! Login to access your dashboard.",
     "error": "Something went wrong. Please try again."
   },
   "wholesaler_form": {
@@ -58,12 +55,12 @@
     "saree_types": "Preferred Saree Types",
     "budget": "Budget Range per Saree (₹)",
     "submit": "Register as Wholesaler",
-    "success": "Registration successful! We will match you with manufacturers soon.",
+    "success": "Registration successful! Login to access your dashboard.",
     "error": "Something went wrong. Please try again."
   },
   "footer": {
     "tagline": "Direct from Manufacturer — No Middlemen",
-    "contact": "Contact: hello@loomlink.in",
+    "contact": "Contact: info@loomlink.in",
     "rights": "© 2025 LoomLink. All rights reserved."
   }
 }
