@@ -29,6 +29,14 @@
     "p3_title": "Trusted Network",
     "p3_desc": "Verified manufacturers, genuine catalogues, transparent pricing."
   },
+  "listings": {
+    "title": "Featured Listings",
+    "subtitle": "Verified manufacturers — direct contact, no commission",
+    "view_all": "View All Listings",
+    "whatsapp_btn": "WhatsApp karo →",
+    "price_label": "Price",
+    "moq_label": "MOQ"
+  },
   "manufacturer_form": {
     "title": "Manufacturer Registration",
     "name": "Your Name",

@@ -13,6 +13,15 @@ import saree8 from '../assets/saree8.png'
 
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
+const listings = [
+  { name: 'Shri Ram Silk House', cityEn: 'Varanasi, UP', cityHi: 'वाराणसी, UP', type: 'Banarasi', tagsEn: ['Pure Silk', 'Zari Work'], tagsHi: ['शुद्ध सिल्क', 'जरी वर्क'], price: '₹1,200 – ₹4,500', moqEn: 'MOQ: 10 pcs', moqHi: 'MOQ: 10 पीस', wa: '919999999901', img: saree1 },
+  { name: 'Surat Saree Palace', cityEn: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', type: 'Georgette', tagsEn: ['Georgette', 'Embroidery'], tagsHi: ['जॉर्जेट', 'एम्ब्रॉयडरी'], price: '₹450 – ₹1,800', moqEn: 'MOQ: 20 pcs', moqHi: 'MOQ: 20 पीस', wa: '919999999902', img: saree2 },
+  { name: 'Lakshmi Textiles', cityEn: 'Varanasi, UP', cityHi: 'वाराणसी, UP', type: 'Kanjivaram', tagsEn: ['Silk', 'Temple Border'], tagsHi: ['सिल्क', 'टेम्पल बॉर्डर'], price: '₹2,500 – ₹8,000', moqEn: 'MOQ: 5 pcs', moqHi: 'MOQ: 5 पीस', wa: '919999999903', img: saree3 },
+  { name: 'Rajdhani Fabrics', cityEn: 'Ahmedabad, Gujarat', cityHi: 'अहमदाबाद, Gujarat', type: 'Cotton', tagsEn: ['Cotton', 'Block Print'], tagsHi: ['कॉटन', 'ब्लॉक प्रिंट'], price: '₹280 – ₹750', moqEn: 'MOQ: 50 pcs', moqHi: 'MOQ: 50 पीस', wa: '919999999904', img: saree4 },
+  { name: 'Madhya Silk Weavers', cityEn: 'Chanderi, MP', cityHi: 'चंदेरी, MP', type: 'Chanderi', tagsEn: ['Chanderi', 'Gold Border'], tagsHi: ['चंदेरी', 'गोल्ड बॉर्डर'], price: '₹800 – ₹2,200', moqEn: 'MOQ: 15 pcs', moqHi: 'MOQ: 15 पीस', wa: '919999999905', img: saree5 },
+  { name: 'Bengal Loom Co.', cityEn: 'Kolkata, WB', cityHi: 'कोलकाता, WB', type: 'Linen', tagsEn: ['Linen', 'Handwoven'], tagsHi: ['लिनन', 'हैंडवोवन'], price: '₹600 – ₹1,500', moqEn: 'MOQ: 25 pcs', moqHi: 'MOQ: 25 पीस', wa: '919999999906', img: saree6 },
+]
+
 export default function Home() {
   const { t, i18n } = useTranslation()
   const [currentImage, setCurrentImage] = useState(0)
@@ -45,12 +54,10 @@ export default function Home() {
             transition: 'opacity 1.5s ease-in-out',
           }} />
         ))}
-
         <div style={{
           position: 'absolute', inset: 0,
           background: 'linear-gradient(135deg, rgba(27,58,107,0.82) 0%, rgba(15,32,64,0.88) 100%)',
         }} />
-
         <div style={{ position: 'relative', maxWidth: '720px', margin: '0 auto' }}>
           <div style={{
             display: 'inline-block',
@@ -67,7 +74,6 @@ export default function Home() {
           }}>
             {isHindi ? 'भारत का #1 B2B साड़ी मार्केटप्लेस' : "India's #1 B2B Saree Marketplace"}
           </div>
-
           <h1 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(2.4rem, 6vw, 4rem)',
@@ -77,7 +83,6 @@ export default function Home() {
           }}>
             {isHindi ? 'निर्माता से सीधा' : 'Direct from Manufacturer'}
           </h1>
-
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
@@ -87,7 +92,6 @@ export default function Home() {
           }}>
             {isHindi ? 'बिना बीच वाले के' : 'No Middlemen'}
           </h2>
-
           <p style={{
             color: 'rgba(255,255,255,0.85)',
             fontSize: '1.1rem',
@@ -99,45 +103,33 @@ export default function Home() {
               ? 'भारत के वेरिफाइड निर्माताओं से UP, Bihar और Gujarat के थोक विक्रेताओं से सीधे जुड़ें — कोई कमीशन नहीं, कोई बिचौलिया नहीं'
               : 'Connect directly with verified manufacturers across India — no commission, no middlemen, better margins'}
           </p>
-
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/manufacturer" style={{
-              background: '#E8821A',
-              color: '#fff',
-              padding: '16px 36px',
-              borderRadius: '8px',
-              fontWeight: 700,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              fontFamily: "'Mukta', sans-serif",
+              background: '#E8821A', color: '#fff',
+              padding: '16px 36px', borderRadius: '8px',
+              fontWeight: 700, fontSize: '1rem',
+              textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
               boxShadow: '0 4px 20px rgba(232,130,26,0.4)',
             }}>
               {isHindi ? '🏭 मैं निर्माता हूँ' : '🏭 I am a Manufacturer'}
             </Link>
             <Link to="/wholesaler" style={{
-              background: 'transparent',
-              color: '#FFFFFF',
-              padding: '16px 36px',
-              borderRadius: '8px',
-              fontWeight: 700,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              fontFamily: "'Mukta', sans-serif",
+              background: 'transparent', color: '#FFFFFF',
+              padding: '16px 36px', borderRadius: '8px',
+              fontWeight: 700, fontSize: '1rem',
+              textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
               border: '2px solid rgba(255,255,255,0.6)',
             }}>
               {isHindi ? '🛍️ मैं थोक विक्रेता हूँ' : '🛍️ I am a Wholesaler'}
             </Link>
           </div>
-
           <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginTop: '40px' }}>
             {sareeImages.map((_, index) => (
               <div key={index} onClick={() => setCurrentImage(index)} style={{
                 width: index === currentImage ? '24px' : '8px',
-                height: '8px',
-                borderRadius: '4px',
+                height: '8px', borderRadius: '4px',
                 background: index === currentImage ? '#F5A623' : 'rgba(255,255,255,0.4)',
-                cursor: 'pointer',
-                transition: 'all 0.3s',
+                cursor: 'pointer', transition: 'all 0.3s',
               }} />
             ))}
           </div>
@@ -160,13 +152,11 @@ export default function Home() {
             <div key={item.label} style={{ textAlign: 'center' }}>
               <div style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: '2rem', fontWeight: 700,
-                color: '#F5A623',
+                fontSize: '2rem', fontWeight: 700, color: '#F5A623',
               }}>{item.num}</div>
               <div style={{
                 color: 'rgba(255,255,255,0.8)',
-                fontSize: '0.9rem',
-                fontFamily: "'Mukta', sans-serif",
+                fontSize: '0.9rem', fontFamily: "'Mukta', sans-serif",
               }}>{item.label}</div>
             </div>
           ))}
@@ -178,9 +168,7 @@ export default function Home() {
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-          color: '#1B3A6B',
-          textAlign: 'center',
-          marginBottom: '56px',
+          color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
         }}>
           {t('how.title')}
         </h2>
@@ -191,27 +179,16 @@ export default function Home() {
             { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
           ].map(step => (
             <div key={step.num} style={{
-              background: '#fff',
-              borderRadius: '16px',
+              background: '#fff', borderRadius: '16px',
               padding: '36px 28px',
               boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
               border: '1px solid rgba(27,58,107,0.08)',
-              position: 'relative',
-              overflow: 'hidden',
+              position: 'relative', overflow: 'hidden',
             }}>
-              <div style={{
-                position: 'absolute', top: '-16px', right: '-8px',
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '5rem', fontWeight: 700,
-                color: 'rgba(27,58,107,0.05)',
-                lineHeight: 1,
-                display: 'none',
-              }}>{step.num}</div>
               <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
               <h3 style={{
                 fontFamily: "'Playfair Display', serif",
-                fontSize: '1.3rem', color: '#1B3A6B',
-                marginBottom: '10px',
+                fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px',
               }}>{step.title}</h3>
               <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
             </div>
@@ -228,9 +205,7 @@ export default function Home() {
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-            color: '#1B3A6B',
-            textAlign: 'center',
-            marginBottom: '56px',
+            color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
           }}>
             {t('why.title')}
           </h2>
@@ -241,8 +216,7 @@ export default function Home() {
               { title: t('why.p3_title'), desc: t('why.p3_desc'), icon: '✅', color: '#2D7A4A' },
             ].map(point => (
               <div key={point.title} style={{
-                background: '#fff',
-                borderRadius: '16px',
+                background: '#fff', borderRadius: '16px',
                 padding: '36px 28px',
                 borderTop: `4px solid ${point.color}`,
                 boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
@@ -250,9 +224,7 @@ export default function Home() {
                 <div style={{ fontSize: '2rem', marginBottom: '14px' }}>{point.icon}</div>
                 <h3 style={{
                   fontFamily: "'Playfair Display', serif",
-                  fontSize: '1.25rem',
-                  color: '#2D2D2D',
-                  marginBottom: '10px',
+                  fontSize: '1.25rem', color: '#2D2D2D', marginBottom: '10px',
                 }}>{point.title}</h3>
                 <p style={{ color: '#666', lineHeight: 1.7, fontSize: '0.97rem' }}>{point.desc}</p>
               </div>
@@ -261,17 +233,143 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FEATURED LISTINGS */}
+      <section style={{ padding: '80px 24px', background: '#FAF7F2' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+            color: '#1B3A6B', textAlign: 'center', marginBottom: '8px',
+          }}>
+            {t('listings.title')}
+          </h2>
+          <p style={{
+            textAlign: 'center', color: '#666',
+            fontSize: '1rem', marginBottom: '48px',
+            fontFamily: "'Mukta', sans-serif",
+          }}>
+            {t('listings.subtitle')}
+          </p>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '24px', marginBottom: '40px',
+          }}>
+            {listings.map(item => (
+              <div key={item.name} style={{
+                background: '#fff', borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
+                border: '1px solid rgba(27,58,107,0.08)',
+                transition: 'transform 0.2s',
+              }}
+                onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                <img
+                  src={item.img}
+                  alt={item.name}
+                  style={{
+                    width: '100%', height: '200px',
+                    objectFit: 'cover', display: 'block',
+                  }}
+                />
+                <div style={{ padding: '18px 20px' }}>
+                  <span style={{
+                    display: 'inline-block',
+                    background: 'rgba(232,130,26,0.12)',
+                    color: '#E8821A', fontSize: '0.75rem',
+                    fontWeight: 600, padding: '3px 10px',
+                    borderRadius: '20px', marginBottom: '10px',
+                    fontFamily: "'Mukta', sans-serif",
+                  }}>
+                    {item.type}
+                  </span>
+                  <div style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: '1.1rem', color: '#1B3A6B',
+                    fontWeight: 700, marginBottom: '4px',
+                  }}>
+                    {item.name}
+                  </div>
+                  <div style={{
+                    color: '#888', fontSize: '0.85rem',
+                    marginBottom: '10px', fontFamily: "'Mukta', sans-serif",
+                  }}>
+                    📍 {isHindi ? item.cityHi : item.cityEn}
+                  </div>
+                  <div style={{ marginBottom: '10px' }}>
+                    {(isHindi ? item.tagsHi : item.tagsEn).map(tag => (
+                      <span key={tag} style={{
+                        display: 'inline-block',
+                        background: '#EEF2F8', color: '#1B3A6B',
+                        fontSize: '0.72rem', padding: '2px 8px',
+                        borderRadius: '4px', marginRight: '4px',
+                        fontFamily: "'Mukta', sans-serif",
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div style={{
+                    color: '#2D7A4A', fontWeight: 700,
+                    fontSize: '1rem', marginBottom: '4px',
+                    fontFamily: "'Mukta', sans-serif",
+                  }}>
+                    {item.price} / {isHindi ? 'पीस' : 'piece'}
+                  </div>
+                  <div style={{
+                    color: '#999', fontSize: '0.8rem',
+                    marginBottom: '14px', fontFamily: "'Mukta', sans-serif",
+                  }}>
+                    {isHindi ? item.moqHi : item.moqEn}
+                  </div>
+                  
+                    href={`https://wa.me/${item.wa}?text=${encodeURIComponent(
+                      isHindi
+                        ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।`
+                        : `Hi! I'm interested in sarees from ${item.name}.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'block', textAlign: 'center',
+                      background: '#25D366', color: '#fff',
+                      padding: '10px', borderRadius: '8px',
+                      fontSize: '0.9rem', fontWeight: 600,
+                      textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
+                    }}
+                  >
+                    {t('listings.whatsapp_btn')}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <button style={{
+              background: 'transparent',
+              border: '2px solid #1B3A6B',
+              color: '#1B3A6B', padding: '14px 36px',
+              borderRadius: '8px', fontWeight: 700,
+              fontSize: '1rem', cursor: 'pointer',
+              fontFamily: "'Mukta', sans-serif",
+            }}>
+              {t('listings.view_all')}
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* CTA BOTTOM */}
       <section style={{
         background: '#1B3A6B',
-        padding: '64px 24px',
-        textAlign: 'center',
+        padding: '64px 24px', textAlign: 'center',
       }}>
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: 'clamp(1.5rem, 4vw, 2rem)',
-          color: '#FAF7F2',
-          marginBottom: '12px',
+          color: '#FAF7F2', marginBottom: '12px',
         }}>
           {isHindi ? 'अभी जुड़ें — मुफ्त रजिस्ट्रेशन' : 'Join Now — Free Registration'}
         </h2>
