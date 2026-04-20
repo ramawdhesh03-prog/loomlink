@@ -36,6 +36,7 @@ export default function Home() {
 
   return (
     <main>
+
       {/* HERO */}
       <section style={{
         position: 'relative',
@@ -256,13 +257,15 @@ export default function Home() {
             gap: '24px', marginBottom: '40px',
           }}>
             {listings.map(item => (
-              <div key={item.name} style={{
-                background: '#fff', borderRadius: '16px',
-                overflow: 'hidden',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
-                border: '1px solid rgba(27,58,107,0.08)',
-                transition: 'transform 0.2s',
-              }}
+              <div
+                key={item.name}
+                style={{
+                  background: '#fff', borderRadius: '16px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.07)',
+                  border: '1px solid rgba(27,58,107,0.08)',
+                  transition: 'transform 0.2s',
+                }}
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
               >
@@ -398,6 +401,7 @@ export default function Home() {
           </Link>
         </div>
       </section>
+
     </main>
   )
 }
