@@ -9,24 +9,14 @@ const SAREE_TYPES = [
 ]
 
 const inputStyle = {
-  width: '100%',
-  padding: '12px 16px',
-  border: '1.5px solid #ddd',
-  borderRadius: '8px',
-  fontSize: '1rem',
-  fontFamily: "'Mukta', sans-serif",
-  color: '#2D2D2D',
-  background: '#fff',
-  outline: 'none',
-  boxSizing: 'border-box',
+  width: '100%', padding: '12px 16px', border: '1.5px solid #ddd',
+  borderRadius: '8px', fontSize: '1rem', fontFamily: "'Mukta', sans-serif",
+  color: '#2D2D2D', background: '#fff', outline: 'none', boxSizing: 'border-box',
 }
 
 const labelStyle = {
-  display: 'block',
-  marginBottom: '6px',
-  fontWeight: 600,
-  fontSize: '0.9rem',
-  color: '#2D2D2D',
+  display: 'block', marginBottom: '6px', fontWeight: 600,
+  fontSize: '0.9rem', color: '#2D2D2D',
 }
 
 export default function WholesalerRegister() {
@@ -34,9 +24,8 @@ export default function WholesalerRegister() {
   const [form, setForm] = useState({
     name: '', business: '', city: '',
     phone: '', whatsapp: '',
-    monthlyReq: '',
-    sareeTypes: [],
-    budget: '',
+    monthlyReq: '', sareeTypes: [], budget: '',
+    email: '', password: '',
   })
   const [status, setStatus] = useState(null)
 
@@ -52,13 +41,29 @@ export default function WholesalerRegister() {
   }
 
   const handleSubmit = async () => {
-    if (!form.name || !form.phone || !form.business) {
-      alert('Please fill required fields.')
+    if (!form.name || !form.phone || !form.business || !form.email || !form.password) {
+      alert('Sabhi required fields bharein!')
+      return
+    }
+    if (form.password.length < 6) {
+      alert('Password kam se kam 6 characters ka hona chahiye!')
       return
     }
     setStatus('loading')
     try {
+      // Supabase Auth mein account banao
+      const { data: authData, error: authError } = await supabase.auth.signUp({
+        email: form.email,
+        password: form.password,
+        options: {
+          data: { role: 'wholesaler' }
+        }
+      })
+      if (authError) throw authError
+
+      // Database mein data save karo
       const { error } = await supabase.from('wholesalers').insert([{
+        user_id: authData.user.id,
         name: form.name,
         business_name: form.business,
         city: form.city,
@@ -75,15 +80,13 @@ export default function WholesalerRegister() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          type: 'wholesaler',
-          name: form.name,
-          business: form.business,
-          phone: form.phone,
+          type: 'wholesaler', name: form.name,
+          business: form.business, phone: form.phone,
         }),
       })
 
       setStatus('success')
-      setForm({ name: '', business: '', city: '', phone: '', whatsapp: '', monthlyReq: '', sareeTypes: [], budget: '' })
+      setForm({ name: '', business: '', city: '', phone: '', whatsapp: '', monthlyReq: '', sareeTypes: [], budget: '', email: '', password: '' })
     } catch (err) {
       console.error(err)
       setStatus('error')
@@ -94,43 +97,32 @@ export default function WholesalerRegister() {
     <main style={{ padding: '60px 24px', maxWidth: '680px', margin: '0 auto' }}>
       <div style={{
         background: 'linear-gradient(135deg, #C9A84C, #A8873D)',
-        borderRadius: '16px 16px 0 0',
-        padding: '32px 36px',
+        borderRadius: '16px 16px 0 0', padding: '32px 36px',
       }}>
         <div style={{ fontSize: '2rem', marginBottom: '8px' }}>🛍️</div>
-        <h1 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: '1.8rem', margin: 0, color: '#2D2D2D',
-        }}>{t('wholesaler_form.title')}</h1>
+        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', margin: 0, color: '#2D2D2D' }}>
+          {t('wholesaler_form.title')}
+        </h1>
         <p style={{ color: 'rgba(45,45,45,0.7)', marginTop: '8px', fontSize: '0.95rem' }}>
           Seedha manufacturer se source karo — free registration
         </p>
       </div>
 
-      <div style={{
-        background: '#fff',
-        borderRadius: '0 0 16px 16px',
-        padding: '36px',
-        boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-      }}>
+      <div style={{ background: '#fff', borderRadius: '0 0 16px 16px', padding: '36px', boxShadow: '0 8px 32px rgba(0,0,0,0.1)' }}>
         {status === 'success' && (
-          <div style={{
-            background: '#f0faf4', border: '1px solid #2D7A4A', color: '#2D7A4A',
-            padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600,
-          }}>
-            ✅ {t('wholesaler_form.success')}
+          <div style={{ background: '#f0faf4', border: '1px solid #2D7A4A', color: '#2D7A4A', padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600 }}>
+            ✅ Registration successful! Ab login karo apne dashboard ke liye.
           </div>
         )}
         {status === 'error' && (
-          <div style={{
-            background: '#fff5f5', border: '1px solid #8B1A1A', color: '#8B1A1A',
-            padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600,
-          }}>
-            ❌ {t('wholesaler_form.error')}
+          <div style={{ background: '#fff5f5', border: '1px solid #8B1A1A', color: '#8B1A1A', padding: '14px 18px', borderRadius: '8px', marginBottom: '24px', fontWeight: 600 }}>
+            ❌ Kuch galat hua. Email already registered ho sakta hai.
           </div>
         )}
 
         <div style={{ display: 'grid', gap: '20px' }}>
+
+          {/* Name + Business */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.name')} *</label>
@@ -142,17 +134,13 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
+          {/* City */}
           <div>
             <label style={labelStyle}>{t('wholesaler_form.city')}</label>
-            <input
-              name="city"
-              value={form.city}
-              onChange={handleChange}
-              style={inputStyle}
-              placeholder="Apna shehar likhein — jaise Lucknow, Patna, Ahmedabad..."
-            />
+            <input name="city" value={form.city} onChange={handleChange} style={inputStyle} placeholder="Apna shehar likhein — jaise Lucknow, Patna, Ahmedabad..." />
           </div>
 
+          {/* Phone + WhatsApp */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.phone')} *</label>
@@ -164,33 +152,43 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
+          {/* Email + Password */}
+          <div style={{ background: '#f8f9fa', borderRadius: '12px', padding: '20px', border: '1px solid #e0e0e0' }}>
+            <p style={{ margin: '0 0 16px', fontWeight: 600, color: '#1B3A6B', fontSize: '0.95rem' }}>
+              🔐 Login Details — Dashboard access ke liye
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div>
+                <label style={labelStyle}>Email Address *</label>
+                <input name="email" value={form.email} onChange={handleChange} style={inputStyle} type="email" placeholder="aapka@email.com" />
+              </div>
+              <div>
+                <label style={labelStyle}>Password * (min 6 characters)</label>
+                <input name="password" value={form.password} onChange={handleChange} style={inputStyle} type="password" placeholder="••••••••" />
+              </div>
+            </div>
+          </div>
+
+          {/* Saree Types */}
           <div>
             <label style={labelStyle}>{t('wholesaler_form.saree_types')}</label>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '4px' }}>
               {SAREE_TYPES.map(type => (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => toggleSareeType(type)}
-                  style={{
-                    padding: '8px 18px',
-                    borderRadius: '24px',
-                    border: `2px solid ${form.sareeTypes.includes(type) ? '#C9A84C' : '#ddd'}`,
-                    background: form.sareeTypes.includes(type) ? '#C9A84C' : '#fff',
-                    color: form.sareeTypes.includes(type) ? '#2D2D2D' : '#666',
-                    cursor: 'pointer',
-                    fontFamily: "'Mukta', sans-serif",
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    transition: 'all 0.2s',
-                  }}
-                >
+                <button key={type} type="button" onClick={() => toggleSareeType(type)} style={{
+                  padding: '8px 18px', borderRadius: '24px',
+                  border: `2px solid ${form.sareeTypes.includes(type) ? '#C9A84C' : '#ddd'}`,
+                  background: form.sareeTypes.includes(type) ? '#C9A84C' : '#fff',
+                  color: form.sareeTypes.includes(type) ? '#2D2D2D' : '#666',
+                  cursor: 'pointer', fontFamily: "'Mukta', sans-serif",
+                  fontWeight: 600, fontSize: '0.9rem', transition: 'all 0.2s',
+                }}>
                   {type}
                 </button>
               ))}
             </div>
           </div>
 
+          {/* Monthly Req + Budget */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
             <div>
               <label style={labelStyle}>{t('wholesaler_form.monthly_req')}</label>
@@ -202,24 +200,16 @@ export default function WholesalerRegister() {
             </div>
           </div>
 
-          <button
-            onClick={handleSubmit}
-            disabled={status === 'loading'}
-            style={{
-              background: status === 'loading' ? '#aaa' : '#C9A84C',
-              color: '#2D2D2D',
-              padding: '16px',
-              border: 'none',
-              borderRadius: '8px',
-              fontSize: '1.05rem',
-              fontWeight: 700,
-              fontFamily: "'Mukta', sans-serif",
-              cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-              width: '100%',
-              marginTop: '8px',
-            }}
-          >
-            {status === 'loading' ? 'Submitting...' : t('wholesaler_form.submit')}
+          {/* Submit */}
+          <button onClick={handleSubmit} disabled={status === 'loading'} style={{
+            background: status === 'loading' ? '#aaa' : '#C9A84C',
+            color: '#2D2D2D', padding: '16px', border: 'none',
+            borderRadius: '8px', fontSize: '1.05rem', fontWeight: 700,
+            fontFamily: "'Mukta', sans-serif",
+            cursor: status === 'loading' ? 'not-allowed' : 'pointer',
+            width: '100%', marginTop: '8px',
+          }}>
+            {status === 'loading' ? 'Registering...' : t('wholesaler_form.submit')}
           </button>
         </div>
       </div>
