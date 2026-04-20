@@ -6,6 +6,10 @@ import ManufacturerRegister from './pages/ManufacturerRegister'
 import WholesalerRegister from './pages/WholesalerRegister'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import Login from './pages/Login'
+import ManufacturerDashboard from './pages/ManufacturerDashboard'
+import WholesalerDashboard from './pages/WholesalerDashboard'
+import AdminDashboard from './pages/AdminDashboard'
 
 export default function App() {
   return (
@@ -18,6 +22,10 @@ export default function App() {
           <Route path="/wholesaler" element={<WholesalerRegister />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/manufacturer-dashboard" element={<ManufacturerDashboard />} />
+          <Route path="/wholesaler-dashboard" element={<WholesalerDashboard />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
         <Footer />
       </div>
