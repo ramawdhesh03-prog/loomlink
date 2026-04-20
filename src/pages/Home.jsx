@@ -257,7 +257,7 @@ export default function Home() {
                   }}>
                     {isHindi ? item.moqHi : item.moqEn}
                   </div>
-                  
+                  <a
                     href={`https://wa.me/${item.wa}?text=${encodeURIComponent(
                       isHindi
                         ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।`
