@@ -10,9 +10,9 @@ import saree5 from '../assets/saree5.png'
 import saree6 from '../assets/saree6.png'
 import saree7 from '../assets/saree7.png'
 import saree8 from '../assets/saree8.png'
-import review1 from '../assets/review1.jpg'
-import review2 from '../assets/review2.jpg'
-import review3 from '../assets/review3.jpg'
+import review1 from '../assets/review1.png'
+import review2 from '../assets/review2.png'
+import review3 from '../assets/review3.png'
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
 const listings = [
@@ -31,7 +31,7 @@ const testimonials = [
     quoteEn: 'LoomLink ne mera business completely badal diya. Pehle sirf local buyers the, ab Rajasthan aur Gujarat se bhi orders aa rahe hain. Koi commission nahi, seedha deal!',
     quoteHi: 'LoomLink ने मेरा बिज़नेस पूरी तरह बदल दिया। पहले सिर्फ लोकल buyers थे, अब राजस्थान और गुजरात से भी orders आ रहे हैं। कोई कमीशन नहीं, सीधी डील!',
     stars: 5,
-    reviewimg: review1,
+    img: review1,
     badge: '⭐ Verified Manufacturer',
   },
   {
