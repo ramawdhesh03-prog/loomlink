@@ -445,29 +445,19 @@ export default function Home() {
       </section>
 
       {/* WHATSAPP FLOAT BUTTON */}
-      
-        href="https://wa.me/919999999999?text=Hello%20LoomLink!%20I%20want%20to%20know%20more."
-        target="_blank"
-        rel="noopener noreferrer"
+      <div
+        onClick={() => window.open('https://wa.me/919999999999?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
         style={{
           position: 'fixed', bottom: '28px', right: '28px',
           background: '#25D366', color: '#fff',
           width: '60px', height: '60px', borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '1.8rem', boxShadow: '0 4px 20px rgba(37,211,102,0.5)',
-          textDecoration: 'none', zIndex: 999,
-          animation: 'pulse 2s infinite',
+          cursor: 'pointer', zIndex: 999,
         }}
       >
         💬
-      </a>
-      <style>{`
-        @keyframes pulse {
-          0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
-          70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
-          100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-      `}</style>
+      </div>
 
     </main>
   )
