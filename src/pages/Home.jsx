@@ -13,6 +13,8 @@ import saree8 from '../assets/saree8.png'
 import review1 from '../assets/review1.png'
 import review2 from '../assets/review2.png'
 import review3 from '../assets/review3.png'
+import review4 from '../assets/review4.png'
+import review5 from '../assets/review5.png'
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
 const listings = [
