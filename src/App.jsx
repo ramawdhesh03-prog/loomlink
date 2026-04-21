@@ -14,7 +14,7 @@ import AdminDashboard from './pages/AdminDashboard'
 export default function App() {
   return (
     <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: '#1B3A6B', color: '#1A1A2E', fontFamily: "'Mukta', sans-serif" }}>
+      <div style={{ minHeight: '100vh', background: 'transparent', color: '#1A1A2E', fontFamily: "'Mukta', sans-serif" }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
