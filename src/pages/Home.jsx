@@ -29,7 +29,7 @@ const testimonials = [
     quoteEn: 'LoomLink ne mera business completely badal diya. Pehle sirf local buyers the, ab Rajasthan aur Gujarat se bhi orders aa rahe hain. Koi commission nahi, seedha deal!',
     quoteHi: 'LoomLink ने मेरा बिज़नेस पूरी तरह बदल दिया। पहले सिर्फ लोकल buyers थे, अब राजस्थान और गुजरात से भी orders आ रहे हैं। कोई कमीशन नहीं, सीधी डील!',
     stars: 5,
-    img: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=90&h=90&fit=crop&crop=face
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=90&h=90&fit=crop&crop=face',
     badge: '⭐ Verified Manufacturer',
   },
   {
@@ -38,7 +38,7 @@ const testimonials = [
     quoteEn: 'Pehle manufacturer dhundhne mein bahut time lagta tha. LoomLink se seedha Surat aur Varanasi ke manufacturers se WhatsApp pe baat karte hain. Margin bhi badh gayi!',
     quoteHi: 'पहले manufacturer ढूंढने में बहुत time लगता था। LoomLink से सीधे सूरत और वाराणसी के manufacturers से WhatsApp पे बात करते हैं। Margin भी बढ़ गई!',
     stars: 5,
-    img: https://randomuser.me/api/portraits/women/44.jpg
+    img: 'https://randomuser.me/api/portraits/women/44.jpg',
     badge: '✅ Verified Wholesaler',
   },
   {
@@ -47,7 +47,7 @@ const testimonials = [
     quoteEn: 'Hamare jaisa chhota weaver pehle sirf local market pe depend karta tha. Ab LoomLink se Bihar aur Gujarat tak sarees pahunch rahi hain. Bahut achha platform hai!',
     quoteHi: 'हमारे जैसा छोटा बुनकर पहले सिर्फ local market पे depend करता था। अब LoomLink से Bihar और Gujarat तक साड़ियाँ पहुँच रही हैं। बहुत अच्छा platform है!',
     stars: 5,
-    img: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=90&h=90&fit=crop&crop=face
+    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=90&h=90&fit=crop&crop=face',
     badge: '🏭 Verified Weaver',
   },
   {
@@ -56,7 +56,7 @@ const testimonials = [
     quoteEn: 'Maine pehli baar Bhagalpur silk directly manufacturer se mangwaya — price 30% kam tha aur quality ekdum top! LoomLink really works!',
     quoteHi: 'मैंने पहली बार भागलपुर silk directly manufacturer से मँगवाया — price 30% कम था और quality एकदम top! LoomLink really works!',
     stars: 5,
-    img: https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=90&h=90&fit=crop&crop=face
+    img: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=90&h=90&fit=crop&crop=face',
     badge: '🛍️ Verified Buyer',
   },
 ]
