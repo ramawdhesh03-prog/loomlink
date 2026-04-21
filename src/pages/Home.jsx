@@ -439,7 +439,7 @@ export default function Home() {
 
       {/* WHATSAPP FLOAT BUTTON */}
       <div
-        onClick={() => window.open('https://wa.me/919999999999?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
+        onClick={() => window.open('https://wa.me/918225080825?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
         style={{
           position: 'fixed', bottom: '28px', right: '28px',
           background: '#25D366', color: '#fff',
