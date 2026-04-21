@@ -7,9 +7,9 @@ import WholesalerRegister from './pages/WholesalerRegister'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
 import Login from './pages/Login.jsx'
-import ManufacturerDashboard from './pages/ManufacturerDashboard.jsx/index.js'
-import WholesalerDashboard from './pages/WholesalerDashboard.jsx/index.js'
-import AdminDashboard from './pages/AdminDashboard.jsx/index.js'
+import ManufacturerDashboard from './pages/ManufacturerDashboard'
+import WholesalerDashboard from './pages/WholesalerDashboard'
+import AdminDashboard from './pages/AdminDashboard'
 
 export default function App() {
   return (
