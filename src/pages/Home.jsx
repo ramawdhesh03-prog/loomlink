@@ -260,23 +260,18 @@ export default function Home() {
                     {isHindi ? item.moqHi : item.moqEn}
                   </div>
                   
-                    href={`https://wa.me/${item.wa}?text=${encodeURIComponent(
-                      isHindi
-                        ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।`
-                        : `Hi! I'm interested in sarees from ${item.name}.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'block', textAlign: 'center',
-                      background: '#25D366', color: '#fff',
-                      padding: '10px', borderRadius: '8px',
-                      fontSize: '0.9rem', fontWeight: 600,
-                      textDecoration: 'none', fontFamily: "'Mukta', sans-serif",
-                    }}
-                  >
-                    {t('listings.whatsapp_btn')}
-                  </a>
+                    <div
+  onClick={() => window.open(`https://wa.me/${item.wa}?text=${encodeURIComponent(isHindi ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।` : `Hi! I'm interested in sarees from ${item.name}.`)}`, '_blank')}
+  style={{
+    display: 'block', textAlign: 'center',
+    background: '#25D366', color: '#fff',
+    padding: '10px', borderRadius: '8px',
+    fontSize: '0.9rem', fontWeight: 600,
+    cursor: 'pointer', fontFamily: "'Mukta', sans-serif",
+  }}
+>
+  {t('listings.whatsapp_btn')}
+</div>
                 </div>
               </div>
             ))}
