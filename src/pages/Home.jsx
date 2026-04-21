@@ -246,7 +246,84 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+{/* SAREE CATEGORIES */}
+<section style={{ padding: '80px 24px', background: '#fff', width: '100%', boxSizing: 'border-box' }}>
+  <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+    <h2 style={{
+      fontFamily: "'Playfair Display', serif",
+      fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+      color: '#1B3A6B', textAlign: 'center', marginBottom: '8px',
+    }}>
+      {isHindi ? 'साड़ी की किस्में' : 'Browse by Category'}
+    </h2>
+    <p style={{
+      textAlign: 'center', color: '#666',
+      fontSize: '1rem', marginBottom: '48px',
+      fontFamily: "'Mukta', sans-serif",
+    }}>
+      {isHindi ? 'अपनी पसंद की साड़ी चुनें — सीधे निर्माता से' : 'Choose your saree type — direct from manufacturer'}
+    </p>
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+      gap: '24px',
+    }}>
+      {[
+        { name: 'Banarasi Silk', nameHi: 'बनारसी सिल्क', city: 'Varanasi, UP', cityHi: 'वाराणसी, UP', img: saree1, emoji: '🥻' },
+        { name: 'Georgette', nameHi: 'जॉर्जेट', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: saree2, emoji: '✨' },
+        { name: 'Kanjivaram', nameHi: 'कांजीवरम', city: 'Tamil Nadu', cityHi: 'तमिल नाडु', img: saree3, emoji: '👑' },
+        { name: 'Chanderi', nameHi: 'चंदेरी', city: 'Chanderi, MP', cityHi: 'चंदेरी, MP', img: saree5, emoji: '🌸' },
+        { name: 'Cotton', nameHi: 'कॉटन', city: 'Ahmedabad, Gujarat', cityHi: 'अहमदाबाद, Gujarat', img: saree4, emoji: '🌿' },
+        { name: 'Bhagalpuri Silk', nameHi: 'भागलपुरी सिल्क', city: 'Bhagalpur, Bihar', cityHi: 'भागलपुर, Bihar', img: saree6, emoji: '💎' },
+      ].map(cat => (
+        <div
+          key={cat.name}
+          style={{
+            position: 'relative',
+            height: '220px',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            cursor: 'pointer',
+          }}
+          onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.08)'}
+          onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+        >
+          <img
+            src={cat.img}
+            alt={cat.name}
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'cover',
+              transition: 'transform 0.4s ease',
+            }}
+          />
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(to top, rgba(15,32,64,0.85) 0%, rgba(15,32,64,0.2) 60%, transparent 100%)',
+          }} />
+          <div style={{
+            position: 'absolute', bottom: '20px', left: '20px',
+          }}>
+            <div style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: '1.3rem', color: '#fff',
+              fontWeight: 700, marginBottom: '4px',
+            }}>
+              {cat.emoji} {isHindi ? cat.nameHi : cat.name}
+            </div>
+            <div style={{
+              color: 'rgba(255,255,255,0.8)',
+              fontSize: '0.85rem',
+              fontFamily: "'Mukta', sans-serif",
+            }}>
+              📍 {isHindi ? cat.cityHi : cat.city}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
       {/* FEATURED LISTINGS */}
       <section style={{ padding: '80px 24px', background: '#FAF7F2', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
