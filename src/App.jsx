@@ -6,15 +6,15 @@ import ManufacturerRegister from './pages/ManufacturerRegister'
 import WholesalerRegister from './pages/WholesalerRegister'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
-import Login from './pages/Login'
-import ManufacturerDashboard from './pages/ManufacturerDashboard'
-import WholesalerDashboard from './pages/WholesalerDashboard'
-import AdminDashboard from './pages/AdminDashboard'
+import Login from './pages/Login.jsx'
+import ManufacturerDashboard from './pages/ManufacturerDashboard.jsx/index.js'
+import WholesalerDashboard from './pages/WholesalerDashboard.jsx/index.js'
+import AdminDashboard from './pages/AdminDashboard.jsx/index.js'
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div style={{ minHeight: '100vh', background: '#F8F9FC', color: '#1A1A2E', fontFamily: "'Mukta', sans-serif" }}>
+      <div style={{ minHeight: '100vh', background: '#1B3A6B', color: '#1A1A2E', fontFamily: "'Mukta', sans-serif" }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
