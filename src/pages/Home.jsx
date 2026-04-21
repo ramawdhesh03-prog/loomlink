@@ -10,7 +10,9 @@ import saree5 from '../assets/saree5.png'
 import saree6 from '../assets/saree6.png'
 import saree7 from '../assets/saree7.png'
 import saree8 from '../assets/saree8.png'
-
+import review1 from '../assets/review1.jpg'
+import review2 from '../assets/review2.jpg'
+import review3 from '../assets/review3.jpg'
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
 const listings = [
@@ -29,7 +31,7 @@ const testimonials = [
     quoteEn: 'LoomLink ne mera business completely badal diya. Pehle sirf local buyers the, ab Rajasthan aur Gujarat se bhi orders aa rahe hain. Koi commission nahi, seedha deal!',
     quoteHi: 'LoomLink ने मेरा बिज़नेस पूरी तरह बदल दिया। पहले सिर्फ लोकल buyers थे, अब राजस्थान और गुजरात से भी orders आ रहे हैं। कोई कमीशन नहीं, सीधी डील!',
     stars: 5,
-    img: '/src/assets/review1.jpg',
+    reviewimg: review1,
     badge: '⭐ Verified Manufacturer',
   },
   {
@@ -38,7 +40,7 @@ const testimonials = [
     quoteEn: 'Pehle manufacturer dhundhne mein bahut time lagta tha. LoomLink se seedha Surat aur Varanasi ke manufacturers se WhatsApp pe baat karte hain. Margin bhi badh gayi!',
     quoteHi: 'पहले manufacturer ढूंढने में बहुत time लगता था। LoomLink से सीधे सूरत और वाराणसी के manufacturers से WhatsApp पे बात करते हैं। Margin भी बढ़ गई!',
     stars: 5,
-    img: '/src/assets/review2.jpg',
+    img: review2,
     badge: '✅ Verified Wholesaler',
   },
   {
@@ -47,7 +49,7 @@ const testimonials = [
     quoteEn: 'Hamare jaisa chhota weaver pehle sirf local market pe depend karta tha. Ab LoomLink se Bihar aur Gujarat tak sarees pahunch rahi hain. Bahut achha platform hai!',
     quoteHi: 'हमारे जैसा छोटा बुनकर पहले सिर्फ local market पे depend करता था। अब LoomLink से Bihar और Gujarat तक साड़ियाँ पहुँच रही हैं। बहुत अच्छा platform है!',
     stars: 5,
-    img: '/src/assets/review3.jpg',
+    img: review3,
     badge: '🏭 Verified Weaver',
   },
   {
