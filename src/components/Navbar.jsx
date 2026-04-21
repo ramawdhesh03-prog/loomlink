@@ -18,7 +18,7 @@ export default function Navbar() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      height: '68px',
+      height: '80px',
       position: 'sticky',
       top: 0,
       zIndex: 100,
