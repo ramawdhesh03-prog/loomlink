@@ -13,8 +13,7 @@ import saree8 from '../assets/saree8.png'
 import review1 from '../assets/review1.png'
 import review2 from '../assets/review2.png'
 import review3 from '../assets/review3.png'
-import review4 from '../assets/review4.png'
-import review5 from '../assets/review5.png'
+
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 
 const listings = [
@@ -54,26 +53,7 @@ const testimonials = [
     img: review3,
     badge: '🏭 Verified Weaver',
   },
-  {
-    nameEn: 'Suresh Kumar Sah', nameHi: 'सुरेश कुमार साह',
-    roleEn: 'Silk Factory Owner, Bhagalpur', roleHi: 'सिल्क फैक्ट्री मालिक, भागलपुर',
-    quoteEn: 'Bhagalpur silk ki demand poore India mein hai, but pehle wholesalers tak pahunchna mushkil tha. LoomLink ne ye problem solve kar di — ab direct orders aate hain!',
-    quoteHi: 'भागलपुर silk की demand पूरे India में है, but पहले wholesalers तक पहुँचना मुश्किल था। LoomLink ने ये problem solve कर दी — अब direct orders आते हैं!',
-    stars: 5,
-    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=90&h=90&fit=crop&crop=face',
-    badge: '🏭 Verified Manufacturer',
-  },
-  {
-    nameEn: 'Rajiv Ansari', nameHi: 'राजीव अंसारी',
-    roleEn: 'Saree Weaver, Mau, UP', roleHi: 'साड़ी बुनकर, मऊ, UP',
-    quoteEn: 'Mau mein hazaron bunkar hain lekin market nahi tha. LoomLink se ab Delhi, Mumbai aur Gujarat ke wholesalers seedha contact karte hain. Kamal ka platform hai!',
-    quoteHi: 'मऊ में हजारों बुनकर हैं लेकिन market नहीं था। LoomLink से अब Delhi, Mumbai और Gujarat के wholesalers सीधे contact करते हैं। कमाल का platform है!',
-    stars: 5,
-    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=90&h=90&fit=crop&crop=face',
-    badge: '🧵 Verified Weaver',
-  },
-]
-
+  
 export default function Home() {
   const { t, i18n } = useTranslation()
   const [currentImage, setCurrentImage] = useState(0)
