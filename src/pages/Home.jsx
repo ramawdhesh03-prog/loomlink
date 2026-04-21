@@ -35,7 +35,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main>
+    <main style={{ margin: 0, padding: 0, overflowX: 'hidden' }}>
 
       {/* HERO */}
       <section style={{
@@ -44,6 +44,8 @@ export default function Home() {
         textAlign: 'center',
         overflow: 'hidden',
         minHeight: '600px',
+        width: '100%',
+        boxSizing: 'border-box',
       }}>
         {sareeImages.map((img, index) => (
           <div key={index} style={{
@@ -56,9 +58,9 @@ export default function Home() {
           }} />
         ))}
         <div style={{
-  position: 'absolute', inset: 0,
-  background: 'linear-gradient(to right, rgba(15,32,64,0.93) 0%, rgba(15,32,64,0.90) 35%, rgba(27,58,107,0.45) 68%, rgba(27,58,107,0.12) 100%)',
-}} />
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to right, rgba(15,32,64,0.93) 0%, rgba(15,32,64,0.90) 35%, rgba(27,58,107,0.45) 68%, rgba(27,58,107,0.12) 100%)',
+        }} />
         <div style={{ position: 'relative', maxWidth: '720px', margin: '0 auto' }}>
           <div style={{
             display: 'inline-block',
@@ -138,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* TRUST SECTION */}
-      <section style={{ background: '#1B3A6B', padding: '32px 24px' }}>
+      <section style={{ background: '#1B3A6B', padding: '32px 24px', width: '100%', boxSizing: 'border-box' }}>
         <div style={{
           maxWidth: '900px', margin: '0 auto',
           display: 'flex', justifyContent: 'center',
@@ -165,7 +167,7 @@ export default function Home() {
       </section>
 
       {/* FEATURED LISTINGS */}
-      <section style={{ padding: '80px 24px', background: '#FAF7F2' }}>
+      <section style={{ padding: '80px 24px', background: '#FAF7F2', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
@@ -257,7 +259,7 @@ export default function Home() {
                   }}>
                     {isHindi ? item.moqHi : item.moqEn}
                   </div>
-                  <a
+                  
                     href={`https://wa.me/${item.wa}?text=${encodeURIComponent(
                       isHindi
                         ? `नमस्ते! मैं ${item.name} से साड़ी के बारे में जानना चाहता हूँ।`
@@ -295,42 +297,44 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section style={{ padding: '80px 24px', maxWidth: '1100px', margin: '0 auto' }}>
-        <h2 style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
-          color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
-        }}>
-          {t('how.title')}
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
-          {[
-            { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
-            { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
-            { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
-          ].map(step => (
-            <div key={step.num} style={{
-              background: '#fff', borderRadius: '16px',
-              padding: '36px 28px',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
-              border: '1px solid rgba(27,58,107,0.08)',
-              position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
-              <h3 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px',
-              }}>{step.title}</h3>
-              <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
-            </div>
-          ))}
+      <section style={{ padding: '80px 24px', width: '100%', boxSizing: 'border-box', background: '#fff' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: "'Playfair Display', serif",
+            fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
+            color: '#1B3A6B', textAlign: 'center', marginBottom: '56px',
+          }}>
+            {t('how.title')}
+          </h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
+            {[
+              { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
+              { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
+              { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
+            ].map(step => (
+              <div key={step.num} style={{
+                background: '#fff', borderRadius: '16px',
+                padding: '36px 28px',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
+                border: '1px solid rgba(27,58,107,0.08)',
+                position: 'relative', overflow: 'hidden',
+              }}>
+                <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px',
+                }}>{step.title}</h3>
+                <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* WHY LOOMLINK */}
       <section style={{
         background: 'linear-gradient(180deg, #F8F9FC 0%, #EEF2F8 100%)',
-        padding: '80px 24px',
+        padding: '80px 24px', width: '100%', boxSizing: 'border-box',
       }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{
@@ -367,7 +371,10 @@ export default function Home() {
       {/* CTA BOTTOM */}
       <section style={{
         background: '#1B3A6B',
-        padding: '64px 24px', textAlign: 'center',
+        padding: '64px 24px',
+        textAlign: 'center',
+        width: '100%',
+        boxSizing: 'border-box',
       }}>
         <h2 style={{
           fontFamily: "'Playfair Display', serif",
