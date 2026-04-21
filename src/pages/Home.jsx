@@ -54,7 +54,7 @@ const testimonials = [
     badge: '🏭 Verified Weaver',
   },
   ]
-export default function Home() { ]
+export default function Home() { 
   const { t, i18n } = useTranslation()
   const [currentImage, setCurrentImage] = useState(0)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
