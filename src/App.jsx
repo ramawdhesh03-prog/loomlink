@@ -10,6 +10,7 @@ import Login from './pages/Login.jsx'
 import ManufacturerDashboard from './pages/ManufacturerDashboard'
 import WholesalerDashboard from './pages/WholesalerDashboard'
 import AdminDashboard from './pages/AdminDashboard'
+import ManufacturerProfile from './pages/ManufacturerProfile'
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
           <Route path="/manufacturer-dashboard" element={<ManufacturerDashboard />} />
           <Route path="/wholesaler-dashboard" element={<WholesalerDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/manufacturer/:id" element={<ManufacturerProfile />} />
         </Routes>
         <Footer />
       </div>
