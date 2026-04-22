@@ -27,7 +27,7 @@ export default function App() {
           <Route path="/manufacturer-dashboard" element={<ManufacturerDashboard />} />
           <Route path="/wholesaler-dashboard" element={<WholesalerDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/manufacturer/:id" element={<ManufacturerProfile />} />
+          <Route path="/profile/:id" element={<ManufacturerProfile />} />
         </Routes>
         <Footer />
       </div>
