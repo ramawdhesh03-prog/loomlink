@@ -639,19 +639,27 @@ export default function Home() {
       </section>
 
       {/* WHATSAPP FLOAT */}
-      <div
-        onClick={() => window.open('https://wa.me/918225080825?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
-        style={{
-          position: 'fixed', bottom: '28px', right: '28px',
-          background: '#25D366', color: '#fff',
-          width: '60px', height: '60px', borderRadius: '50%',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: '1.8rem', boxShadow: '0 4px 20px rgba(37,211,102,0.5)',
-          cursor: 'pointer', zIndex: 999,
-        }}
-      >
-        💬
-      </div>
+     <div style={{ position: 'fixed', bottom: '28px', right: '28px', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+  <div style={{
+    background: '#1B3A6B', color: 'white',
+    fontSize: '0.7rem', fontWeight: 700,
+    padding: '3px 8px', borderRadius: '10px',
+    fontFamily: "'Mukta', sans-serif",
+    boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+  }}>Help?</div>
+  <div
+    onClick={() => window.open('https://wa.me/918225080825?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
+    style={{
+      background: '#25D366', color: '#fff',
+      width: '60px', height: '60px', borderRadius: '50%',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: '1.8rem', boxShadow: '0 4px 20px rgba(37,211,102,0.5)',
+      cursor: 'pointer',
+    }}
+  >
+    💬
+  </div>
+</div>
 
     </main>
   )
