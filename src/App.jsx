@@ -11,6 +11,9 @@ import ManufacturerDashboard from './pages/ManufacturerDashboard'
 import WholesalerDashboard from './pages/WholesalerDashboard'
 import AdminDashboard from './pages/AdminDashboard'
 import ManufacturerProfile from './pages/ManufacturerProfile'
+import TermsConditions from './pages/TermsConditions'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import ReturnPolicy from './pages/ReturnPolicy'
 
 export default function App() {
   return (
@@ -28,6 +31,9 @@ export default function App() {
           <Route path="/wholesaler-dashboard" element={<WholesalerDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/profile/:id" element={<ManufacturerProfile />} />
+          <Route path="/terms" element={<TermsConditions />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/return-policy" element={<ReturnPolicy />} />
         </Routes>
         <Footer />
       </div>

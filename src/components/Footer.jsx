@@ -26,6 +26,8 @@ export default function Footer() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <Link to="/manufacturer" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Manufacturer Registration</Link>
               <Link to="/wholesaler" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Wholesaler Registration</Link>
+              <Link to="/about" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>About Us</Link>
+              <Link to="/contact" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Contact Us</Link>
             </div>
           </div>
           <div>
@@ -33,9 +35,22 @@ export default function Footer() {
             <p style={{ color: '#ccc', fontSize: '0.9rem' }}>{t('footer.contact')}</p>
             <p style={{ color: '#ccc', fontSize: '0.9rem', marginTop: '6px' }}>loomlink.in</p>
           </div>
+          <div>
+            <div style={{ color: '#C9A84C', fontWeight: 600, marginBottom: '12px', fontSize: '1rem' }}>Legal</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <Link to="/terms" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Terms & Conditions</Link>
+              <Link to="/privacy" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Privacy Policy</Link>
+              <Link to="/return-policy" style={{ color: '#ccc', textDecoration: 'none', fontSize: '0.9rem' }}>Return & Dispute Policy</Link>
+            </div>
+          </div>
         </div>
         <div style={{ borderTop: '1px solid #444', paddingTop: '20px', textAlign: 'center', color: '#888', fontSize: '0.85rem' }}>
-          {t('footer.rights')}
+          {t('footer.rights')} &nbsp;|&nbsp;
+          <Link to="/terms" style={{ color: '#888', textDecoration: 'none' }}>Terms</Link>
+          &nbsp;|&nbsp;
+          <Link to="/privacy" style={{ color: '#888', textDecoration: 'none' }}>Privacy</Link>
+          &nbsp;|&nbsp;
+          <Link to="/return-policy" style={{ color: '#888', textDecoration: 'none' }}>Return Policy</Link>
         </div>
       </div>
     </footer>
