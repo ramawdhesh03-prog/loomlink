@@ -7,8 +7,16 @@ export default function Navbar() {
   const { t, i18n } = useTranslation()
   const [menuOpen, setMenuOpen] = useState(false)
 
-  const toggleLang = () => {
-    i18n.changeLanguage(i18n.language === 'hi' ? 'en' : 'hi')
+  const cycleLang = () => {
+    if (i18n.language === 'en') i18n.changeLanguage('hi')
+    else if (i18n.language === 'hi') i18n.changeLanguage('hl')
+    else i18n.changeLanguage('en')
+  }
+
+  const langLabel = () => {
+    if (i18n.language === 'en') return 'हिं'
+    if (i18n.language === 'hi') return 'HGL'
+    return 'EN'
   }
 
   return (
@@ -34,16 +42,15 @@ export default function Navbar() {
       {/* Desktop Links */}
       <div style={{
         display: 'flex', gap: '32px', alignItems: 'center',
-        '@media (max-width: 768px)': { display: 'none' }
       }} className="desktop-nav">
         <Link to="/about" style={{ color: '#1A1A2E', textDecoration: 'none', fontSize: '0.95rem', fontFamily: "'Mukta', sans-serif", fontWeight: 500 }}>About Us</Link>
         <Link to="/contact" style={{ color: '#1A1A2E', textDecoration: 'none', fontSize: '0.95rem', fontFamily: "'Mukta', sans-serif", fontWeight: 500 }}>Contact Us</Link>
-        <button onClick={toggleLang} style={{
+        <button onClick={cycleLang} style={{
           background: 'rgba(232,130,26,0.15)', border: '1px solid #E8821A',
           borderRadius: '20px', padding: '4px 14px', cursor: 'pointer',
           color: '#E8821A', fontSize: '0.85rem', fontFamily: "'Mukta', sans-serif", fontWeight: 600,
         }}>
-          {i18n.language === 'hi' ? 'EN' : 'हिं'}
+          {langLabel()}
         </button>
         <Link to="/login" style={{
           background: '#1B3A6B', color: '#fff', padding: '8px 22px',
@@ -54,15 +61,15 @@ export default function Navbar() {
 
       {/* Mobile Right Side */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }} className="mobile-nav">
-        <button onClick={toggleLang} style={{
+        <button onClick={cycleLang} style={{
           background: 'rgba(232,130,26,0.15)', border: '1px solid #E8821A',
           borderRadius: '20px', padding: '4px 12px', cursor: 'pointer',
           color: '#E8821A', fontSize: '0.8rem', fontFamily: "'Mukta', sans-serif", fontWeight: 600,
         }}>
-          {i18n.language === 'hi' ? 'EN' : 'हिं'}
+          {langLabel()}
         </button>
 
-        {/* Hamburger Button */}
+        {/* Hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
@@ -77,7 +84,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Dropdown */}
       {menuOpen && (
         <div style={{
           position: 'absolute', top: '68px', left: 0, right: 0,
@@ -104,7 +111,6 @@ export default function Navbar() {
         </div>
       )}
 
-      {/* CSS for responsive */}
       <style>{`
         .mobile-nav { display: none !important; }
         .desktop-nav { display: flex !important; }

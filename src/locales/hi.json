@@ -1,74 +1,74 @@
 {
   "nav": {
-    "manufacturer": "निर्माताओं के लिए",
-    "wholesaler": "थोक विक्रेताओं के लिए",
-    "about": "हमारे बारे में"
+    "manufacturer": "Manufacturers Ke Liye",
+    "wholesaler": "Wholesalers Ke Liye",
+    "about": "Hamare Baare Mein"
   },
   "hero": {
-    "tagline": "निर्माता से सीधा",
-    "subtagline": "बिना बीच वाले के",
-    "description": "भारत के वेरिफाइड साड़ी निर्माताओं से सीधे जुड़ें। कोई कमीशन नहीं, कोई बिचौलिया नहीं।",
-    "btn_manufacturer": "मैं निर्माता हूँ",
-    "btn_wholesaler": "मैं थोक विक्रेता हूँ"
+    "tagline": "Seedha Manufacturer Se",
+    "subtagline": "Bina Beech Waale Ke",
+    "description": "India ke verified saree manufacturers se directly connect karo. Koi commission nahi, koi middleman nahi, better margins.",
+    "btn_manufacturer": "Main Manufacturer Hoon",
+    "btn_wholesaler": "Main Wholesaler Hoon"
   },
   "how": {
-    "title": "कैसे काम करता है",
-    "step1_title": "रजिस्टर करें",
-    "step1_desc": "निर्माता या थोक विक्रेता — 2 मिनट में अकाउंट बनाएं, बिल्कुल मुफ्त।",
-    "step2_title": "जुड़ें",
-    "step2_desc": "LoomLink वेरिफाइड निर्माताओं से थोक विक्रेताओं को सीधे जोड़ता है।",
-    "step3_title": "व्यापार करें",
-    "step3_desc": "WhatsApp पर सीधे निर्माता से डील करें। कोई ब्रोकरेज नहीं, ज़्यादा मुनाफा।"
+    "title": "Kaise Kaam Karta Hai",
+    "step1_title": "Register Karo",
+    "step1_desc": "Manufacturer ya wholesaler — 2 minute mein account banao, bilkul free.",
+    "step2_title": "Connect Karo",
+    "step2_desc": "LoomLink verified manufacturers ko wholesalers se seedha connect karta hai.",
+    "step3_title": "Trade Karo",
+    "step3_desc": "WhatsApp pe seedha manufacturer se deal karo. Zero brokerage, maximum profit."
   },
   "why": {
-    "title": "LoomLink क्यों?",
-    "p1_title": "कोई बिचौलिया नहीं",
-    "p1_desc": "निर्माता से सीधी डील — कमीशन शून्य, मुनाफा ज़्यादा।",
-    "p2_title": "पूरे भारत में पहुंच",
-    "p2_desc": "UP, Bihar, Gujarat के थोक विक्रेता अब वेरिफाइड निर्माताओं से सीधे खरीद सकते हैं।",
-    "p3_title": "विश्वसनीय नेटवर्क",
-    "p3_desc": "वेरिफाइड निर्माता, असली कैटलॉग, पारदर्शी कीमत।"
+    "title": "LoomLink Kyun?",
+    "p1_title": "Koi Middleman Nahi",
+    "p1_desc": "Manufacturer se seedha deal — commission zero, munafa zyada.",
+    "p2_title": "Poore India Mein Pahunch",
+    "p2_desc": "UP, Bihar, Gujarat ke wholesalers ab verified manufacturers se seedha kharid sakte hain.",
+    "p3_title": "Trusted Network",
+    "p3_desc": "Verified manufacturers, asli catalogs, transparent pricing."
   },
   "listings": {
-    "title": "फीचर्ड लिस्टिंग",
-    "subtitle": "वेरिफाइड निर्माता — सीधा संपर्क, कोई कमीशन नहीं",
-    "view_all": "सभी लिस्टिंग देखें",
-    "whatsapp_btn": "WhatsApp करो →",
-    "price_label": "कीमत",
+    "title": "Featured Listings",
+    "subtitle": "Verified manufacturers — seedha contact, koi commission nahi",
+    "view_all": "Saari Listings Dekho",
+    "whatsapp_btn": "WhatsApp Karo →",
+    "price_label": "Price",
     "moq_label": "MOQ"
   },
   "manufacturer_form": {
-    "title": "निर्माता पंजीकरण",
-    "name": "आपका नाम",
-    "business": "व्यवसाय का नाम",
-    "city": "शहर",
-    "phone": "फोन नंबर",
-    "whatsapp": "WhatsApp नंबर",
-    "saree_types": "साड़ी के प्रकार (सभी लागू चुनें)",
-    "moq": "न्यूनतम ऑर्डर मात्रा (पीस)",
-    "price_range": "प्रति साड़ी मूल्य सीमा (₹)",
-    "catalog": "कैटलॉग अपलोड करें (वैकल्पिक, PDF/Image)",
-    "submit": "निर्माता के रूप में पंजीकरण करें",
-    "success": "पंजीकरण सफल! डैशबोर्ड के लिए लॉगिन करें।",
-    "error": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।"
+    "title": "Manufacturer Registration",
+    "name": "Aapka Naam",
+    "business": "Business Ka Naam",
+    "city": "Shehar",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "saree_types": "Saree Types (jo bhi lagu ho select karo)",
+    "moq": "Minimum Order Quantity (pieces)",
+    "price_range": "Price Range per Saree (₹)",
+    "catalog": "Catalog Upload Karo (optional, PDF/Image)",
+    "submit": "Manufacturer Ke Roop Mein Register Karo",
+    "success": "Registration ho gaya! Dashboard ke liye login karo.",
+    "error": "Kuch galat hua. Dobara try karo."
   },
   "wholesaler_form": {
-    "title": "थोक विक्रेता पंजीकरण",
-    "name": "आपका नाम",
-    "business": "व्यवसाय का नाम",
-    "city": "शहर",
-    "phone": "फोन नंबर",
-    "whatsapp": "WhatsApp नंबर",
-    "monthly_req": "मासिक आवश्यकता (लगभग पीस)",
-    "saree_types": "पसंदीदा साड़ी प्रकार",
-    "budget": "प्रति साड़ी बजट सीमा (₹)",
-    "submit": "थोक विक्रेता के रूप में पंजीकरण करें",
-    "success": "पंजीकरण सफल! डैशबोर्ड के लिए लॉगिन करें।",
-    "error": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।"
+    "title": "Wholesaler Registration",
+    "name": "Aapka Naam",
+    "business": "Business Ka Naam",
+    "city": "Shehar",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "monthly_req": "Monthly Requirement (approx pieces)",
+    "saree_types": "Pasandida Saree Types",
+    "budget": "Budget Range per Saree (₹)",
+    "submit": "Wholesaler Ke Roop Mein Register Karo",
+    "success": "Registration ho gaya! Dashboard ke liye login karo.",
+    "error": "Kuch galat hua. Dobara try karo."
   },
   "footer": {
-    "tagline": "निर्माता से सीधा — बिना बीच वाले के",
-    "contact": "संपर्क: info@loomlink.in",
-    "rights": "© 2025 LoomLink. सर्वाधिकार सुरक्षित।"
+    "tagline": "Seedha Manufacturer Se — Bina Beech Waale Ke",
+    "contact": "Contact: info@loomlink.in",
+    "rights": "© 2025 LoomLink. Sabhi adhikar surakshit."
   }
 }
