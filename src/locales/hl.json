@@ -1,0 +1,74 @@
+{
+  "nav": {
+    "manufacturer": "Manufacturers Ke Liye",
+    "wholesaler": "Wholesalers Ke Liye",
+    "about": "Hamare Baare Mein"
+  },
+  "hero": {
+    "tagline": "Seedha Manufacturer Se",
+    "subtagline": "Bina Beech Waale Ke",
+    "description": "India ke verified saree manufacturers se directly connect karo. Koi commission nahi, koi middleman nahi, better margins.",
+    "btn_manufacturer": "Main Manufacturer Hoon",
+    "btn_wholesaler": "Main Wholesaler Hoon"
+  },
+  "how": {
+    "title": "Kaise Kaam Karta Hai",
+    "step1_title": "Register Karo",
+    "step1_desc": "Manufacturer ya wholesaler — 2 minute mein account banao, bilkul free.",
+    "step2_title": "Connect Karo",
+    "step2_desc": "LoomLink verified manufacturers ko wholesalers se seedha connect karta hai.",
+    "step3_title": "Trade Karo",
+    "step3_desc": "WhatsApp pe seedha manufacturer se deal karo. Zero brokerage, maximum profit."
+  },
+  "why": {
+    "title": "LoomLink Kyun?",
+    "p1_title": "Koi Middleman Nahi",
+    "p1_desc": "Manufacturer se seedha deal — commission zero, munafa zyada.",
+    "p2_title": "Poore India Mein Pahunch",
+    "p2_desc": "UP, Bihar, Gujarat ke wholesalers ab verified manufacturers se seedha kharid sakte hain.",
+    "p3_title": "Trusted Network",
+    "p3_desc": "Verified manufacturers, asli catalogs, transparent pricing."
+  },
+  "listings": {
+    "title": "Featured Listings",
+    "subtitle": "Verified manufacturers — seedha contact, koi commission nahi",
+    "view_all": "Saari Listings Dekho",
+    "whatsapp_btn": "WhatsApp Karo →",
+    "price_label": "Price",
+    "moq_label": "MOQ"
+  },
+  "manufacturer_form": {
+    "title": "Manufacturer Registration",
+    "name": "Aapka Naam",
+    "business": "Business Ka Naam",
+    "city": "Shehar",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "saree_types": "Saree Types (jo bhi lagu ho select karo)",
+    "moq": "Minimum Order Quantity (pieces)",
+    "price_range": "Price Range per Saree (₹)",
+    "catalog": "Catalog Upload Karo (optional, PDF/Image)",
+    "submit": "Manufacturer Ke Roop Mein Register Karo",
+    "success": "Registration ho gaya! Dashboard ke liye login karo.",
+    "error": "Kuch galat hua. Dobara try karo."
+  },
+  "wholesaler_form": {
+    "title": "Wholesaler Registration",
+    "name": "Aapka Naam",
+    "business": "Business Ka Naam",
+    "city": "Shehar",
+    "phone": "Phone Number",
+    "whatsapp": "WhatsApp Number",
+    "monthly_req": "Monthly Requirement (approx pieces)",
+    "saree_types": "Pasandida Saree Types",
+    "budget": "Budget Range per Saree (₹)",
+    "submit": "Wholesaler Ke Roop Mein Register Karo",
+    "success": "Registration ho gaya! Dashboard ke liye login karo.",
+    "error": "Kuch galat hua. Dobara try karo."
+  },
+  "footer": {
+    "tagline": "Seedha Manufacturer Se — Bina Beech Waale Ke",
+    "contact": "Contact: info@loomlink.in",
+    "rights": "© 2025 LoomLink. Sabhi adhikar surakshit."
+  }
+}
