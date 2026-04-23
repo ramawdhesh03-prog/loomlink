@@ -14,9 +14,40 @@ import saree8 from '../assets/saree8.png'
 import review1 from '../assets/review1.png'
 import review2 from '../assets/review2.png'
 import review3 from '../assets/review3.png'
+import cat1 from '../assets/cat1.png'
+import cat2 from '../assets/cat2.png'
+import cat3 from '../assets/cat3.png'
+import cat4 from '../assets/cat4.png'
+import cat5 from '../assets/cat5.png'
+import cat6 from '../assets/cat6.png'
+import cat7 from '../assets/cat7.png'
+import cat8 from '../assets/cat8.png'
+import cat9 from '../assets/cat9.png'
+import cat10 from '../assets/cat10.png'
+import cat11 from '../assets/cat11.png'
+import cat12 from '../assets/cat12.png'
+import cat13 from '../assets/cat13.png'
+import cat14 from '../assets/cat14.png'
 
 const sareeImages = [saree1, saree2, saree3, saree4, saree5, saree6, saree7, saree8]
 const fallbackImages = [saree1, saree2, saree3, saree4, saree5, saree6]
+
+const CATEGORIES = [
+  { name: 'Banarasi Silk', nameHi: 'बनारसी सिल्क', city: 'Varanasi, UP', cityHi: 'वाराणसी, UP', img: cat1, emoji: '🥻' },
+  { name: 'Kanjivaram Silk', nameHi: 'कांजीवरम सिल्क', city: 'Tamil Nadu', cityHi: 'तमिल नाडु', img: cat2, emoji: '👑' },
+  { name: 'Georgette', nameHi: 'जॉर्जेट', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: cat3, emoji: '✨' },
+  { name: 'Chiffon', nameHi: 'शिफॉन', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: cat4, emoji: '🌸' },
+  { name: 'Cotton', nameHi: 'कॉटन', city: 'Ahmedabad, Gujarat', cityHi: 'अहमदाबाद, Gujarat', img: cat5, emoji: '🌿' },
+  { name: 'Linen', nameHi: 'लिनन', city: 'Kolkata, WB', cityHi: 'कोलकाता, WB', img: cat6, emoji: '🍃' },
+  { name: 'Tussar Silk', nameHi: 'तुसर सिल्क', city: 'Bhagalpur, Bihar', cityHi: 'भागलपुर, Bihar', img: cat7, emoji: '🌾' },
+  { name: 'Chanderi', nameHi: 'चंदेरी', city: 'Chanderi, MP', cityHi: 'चंदेरी, MP', img: cat8, emoji: '💫' },
+  { name: 'Patola', nameHi: 'पटोला', city: 'Patan, Gujarat', cityHi: 'पाटन, Gujarat', img: cat9, emoji: '🎨' },
+  { name: 'Bandhani', nameHi: 'बंधनी', city: 'Jaipur, Rajasthan', cityHi: 'जयपुर, Rajasthan', img: cat10, emoji: '🔵' },
+  { name: 'Leheriya', nameHi: 'लहरिया', city: 'Jodhpur, Rajasthan', cityHi: 'जोधपुर, Rajasthan', img: cat11, emoji: '🌊' },
+  { name: 'Net', nameHi: 'नेट', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: cat12, emoji: '💎' },
+  { name: 'Crepe', nameHi: 'क्रेप', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: cat13, emoji: '🌺' },
+  { name: 'Organza', nameHi: 'ऑर्गेंज़ा', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: cat14, emoji: '🦋' },
+]
 
 const testimonials = [
   {
@@ -47,6 +78,8 @@ export default function Home() {
   const [currentImage, setCurrentImage] = useState(0)
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [manufacturers, setManufacturers] = useState([])
+  const [filteredManufacturers, setFilteredManufacturers] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [loadingMfr, setLoadingMfr] = useState(true)
   const isHindi = i18n.language === 'hi'
 
@@ -64,17 +97,37 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [])
 
-  useEffect(() => {
-    fetchManufacturers()
-  }, [])
+  useEffect(() => { fetchManufacturers() }, [])
 
   const fetchManufacturers = async () => {
     const { data, error } = await supabase
       .from('manufacturers')
       .select('id, business_name, city, moq, price_range, saree_types')
-      .limit(6)
-    if (!error && data) setManufacturers(data)
+      .limit(12)
+    if (!error && data) {
+      setManufacturers(data)
+      setFilteredManufacturers(data)
+    }
     setLoadingMfr(false)
+  }
+
+  const handleCategoryClick = (categoryName) => {
+    setSelectedCategory(categoryName)
+    if (categoryName === 'All') {
+      setFilteredManufacturers(manufacturers)
+    } else {
+      const filtered = manufacturers.filter(m =>
+        (m.saree_types || []).some(type =>
+          type.toLowerCase().includes(categoryName.toLowerCase()) ||
+          categoryName.toLowerCase().includes(type.toLowerCase())
+        )
+      )
+      setFilteredManufacturers(filtered)
+    }
+    // Smooth scroll to manufacturers section
+    setTimeout(() => {
+      document.getElementById('manufacturers-section')?.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
   }
 
   const t2 = testimonials[currentTestimonial]
@@ -160,8 +213,7 @@ export default function Home() {
           </h2>
           <p style={{
             color: 'rgba(255,255,255,0.85)', fontSize: '1.1rem',
-            lineHeight: 1.7, maxWidth: '560px',
-            margin: '0 auto 48px',
+            lineHeight: 1.7, maxWidth: '560px', margin: '0 auto 48px',
           }}>
             {isHindi
               ? 'भारत के वेरिफाइड निर्माताओं से UP, Bihar और Gujarat के थोक विक्रेताओं से सीधे जुड़ें — कोई कमीशन नहीं, कोई बिचौलिया नहीं'
@@ -227,9 +279,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SAREE CATEGORIES */}
+      {/* SAREE CATEGORIES - 14 with filtering */}
       <section style={{ padding: '80px 24px', background: '#fff', width: '100%', boxSizing: 'border-box' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(1.8rem, 4vw, 2.4rem)',
@@ -239,62 +291,100 @@ export default function Home() {
           </h2>
           <p style={{
             textAlign: 'center', color: '#666',
-            fontSize: '1rem', marginBottom: '48px',
+            fontSize: '1rem', marginBottom: '16px',
             fontFamily: "'Mukta', sans-serif",
           }}>
             {isHindi ? 'अपनी पसंद की साड़ी चुनें — सीधे निर्माता से' : 'Choose your saree type — direct from manufacturer'}
           </p>
+
+          {/* All button */}
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <button
+              onClick={() => handleCategoryClick('All')}
+              style={{
+                padding: '8px 24px', borderRadius: '24px', cursor: 'pointer',
+                fontFamily: "'Mukta', sans-serif", fontWeight: 600, fontSize: '0.9rem',
+                background: selectedCategory === 'All' ? '#1B3A6B' : 'transparent',
+                color: selectedCategory === 'All' ? 'white' : '#1B3A6B',
+                border: '2px solid #1B3A6B', transition: 'all 0.2s'
+              }}
+            >
+              {isHindi ? 'सभी देखें' : 'All Categories'}
+            </button>
+          </div>
+
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+            gap: '20px',
           }}>
-            {[
-              { name: 'Banarasi Silk', nameHi: 'बनारसी सिल्क', city: 'Varanasi, UP', cityHi: 'वाराणसी, UP', img: saree1, emoji: '🥻' },
-              { name: 'Georgette', nameHi: 'जॉर्जेट', city: 'Surat, Gujarat', cityHi: 'सूरत, Gujarat', img: saree2, emoji: '✨' },
-              { name: 'Kanjivaram', nameHi: 'कांजीवरम', city: 'Tamil Nadu', cityHi: 'तमिल नाडु', img: saree3, emoji: '👑' },
-              { name: 'Chanderi', nameHi: 'चंदेरी', city: 'Chanderi, MP', cityHi: 'चंदेरी, MP', img: saree5, emoji: '🌸' },
-              { name: 'Cotton', nameHi: 'कॉटन', city: 'Ahmedabad, Gujarat', cityHi: 'अहमदाबाद, Gujarat', img: saree4, emoji: '🌿' },
-              { name: 'Bhagalpuri Silk', nameHi: 'भागलपुरी सिल्क', city: 'Bhagalpur, Bihar', cityHi: 'भागलपुर, Bihar', img: saree6, emoji: '💎' },
-            ].map(cat => (
-              <div key={cat.name} style={{
-                position: 'relative', height: '220px',
-                borderRadius: '16px', overflow: 'hidden', cursor: 'pointer',
-              }}
-                onMouseEnter={e => e.currentTarget.querySelector('img').style.transform = 'scale(1.08)'}
-                onMouseLeave={e => e.currentTarget.querySelector('img').style.transform = 'scale(1)'}
+            {CATEGORIES.map(cat => (
+              <div
+                key={cat.name}
+                onClick={() => handleCategoryClick(cat.name)}
+                style={{
+                  position: 'relative', height: '200px',
+                  borderRadius: '16px', overflow: 'hidden',
+                  cursor: 'pointer',
+                  border: selectedCategory === cat.name ? '3px solid #F5A623' : '3px solid transparent',
+                  transition: 'all 0.3s',
+                  transform: selectedCategory === cat.name ? 'scale(1.03)' : 'scale(1)',
+                  boxShadow: selectedCategory === cat.name ? '0 8px 24px rgba(245,166,35,0.4)' : '0 2px 8px rgba(0,0,0,0.1)',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.querySelector('img').style.transform = 'scale(1.08)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.querySelector('img').style.transform = 'scale(1)'
+                }}
               >
-                <img src={cat.img} alt={cat.name} style={{
-                  width: '100%', height: '100%', objectFit: 'cover',
-                  transition: 'transform 0.4s ease',
-                }} />
+                <img
+                  src={cat.img}
+                  alt={cat.name}
+                  style={{
+                    width: '100%', height: '100%',
+                    objectFit: 'cover',
+                    transition: 'transform 0.4s ease',
+                  }}
+                />
                 <div style={{
                   position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to top, rgba(15,32,64,0.85) 0%, rgba(15,32,64,0.2) 60%, transparent 100%)',
+                  background: selectedCategory === cat.name
+                    ? 'linear-gradient(to top, rgba(245,166,35,0.7) 0%, rgba(15,32,64,0.3) 100%)'
+                    : 'linear-gradient(to top, rgba(15,32,64,0.85) 0%, rgba(15,32,64,0.2) 60%, transparent 100%)',
                 }} />
-                <div style={{ position: 'absolute', bottom: '20px', left: '20px' }}>
+                <div style={{ position: 'absolute', bottom: '16px', left: '16px' }}>
                   <div style={{
                     fontFamily: "'Playfair Display', serif",
-                    fontSize: '1.3rem', color: '#fff',
-                    fontWeight: 700, marginBottom: '4px',
+                    fontSize: '1.1rem', color: '#fff',
+                    fontWeight: 700, marginBottom: '2px',
                   }}>
                     {cat.emoji} {isHindi ? cat.nameHi : cat.name}
                   </div>
                   <div style={{
-                    color: 'rgba(255,255,255,0.8)',
-                    fontSize: '0.85rem', fontFamily: "'Mukta', sans-serif",
+                    color: 'rgba(255,255,255,0.85)',
+                    fontSize: '0.78rem', fontFamily: "'Mukta', sans-serif",
                   }}>
                     📍 {isHindi ? cat.cityHi : cat.city}
                   </div>
                 </div>
+                {selectedCategory === cat.name && (
+                  <div style={{
+                    position: 'absolute', top: '10px', right: '10px',
+                    background: '#F5A623', color: 'white',
+                    borderRadius: '50%', width: '24px', height: '24px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: '0.8rem', fontWeight: 700
+                  }}>✓</div>
+                )}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FEATURED LISTINGS - REAL SUPABASE DATA */}
-      <section style={{ padding: '80px 24px', background: '#FAF7F2', width: '100%', boxSizing: 'border-box' }}>
+      {/* VERIFIED MANUFACTURERS - with filtering */}
+      <section id="manufacturers-section" style={{ padding: '80px 24px', background: '#FAF7F2', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
@@ -305,19 +395,53 @@ export default function Home() {
           </h2>
           <p style={{
             textAlign: 'center', color: '#666',
-            fontSize: '1rem', marginBottom: '48px',
+            fontSize: '1rem', marginBottom: '12px',
             fontFamily: "'Mukta', sans-serif",
           }}>
-            {isHindi ? 'सीधे निर्माता से जुड़ें — कोई कमीशन नहीं' : 'Connect directly with verified manufacturers — no commission'}
+            {selectedCategory === 'All'
+              ? (isHindi ? 'सभी निर्माता — सीधे जुड़ें' : 'All manufacturers — connect directly')
+              : (isHindi ? `${CATEGORIES.find(c => c.name === selectedCategory)?.nameHi} के निर्माता` : `${selectedCategory} Manufacturers`)
+            }
           </p>
+
+          {/* Active filter badge */}
+          {selectedCategory !== 'All' && (
+            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+              <span style={{
+                background: '#F5A623', color: 'white',
+                padding: '6px 16px', borderRadius: '20px',
+                fontSize: '0.85rem', fontWeight: 600,
+                fontFamily: "'Mukta', sans-serif"
+              }}>
+                🔍 {selectedCategory} &nbsp;
+                <span
+                  onClick={() => handleCategoryClick('All')}
+                  style={{ cursor: 'pointer', opacity: 0.8 }}
+                >✕</span>
+              </span>
+            </div>
+          )}
 
           {loadingMfr ? (
             <div style={{ textAlign: 'center', padding: '60px', color: '#888', fontFamily: "'Mukta', sans-serif" }}>
               Loading manufacturers...
             </div>
-          ) : manufacturers.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '60px', color: '#888', fontFamily: "'Mukta', sans-serif" }}>
-              {isHindi ? 'जल्द ही निर्माता जुड़ेंगे!' : 'Manufacturers coming soon!'}
+          ) : filteredManufacturers.length === 0 ? (
+            <div style={{ textAlign: 'center', padding: '60px', fontFamily: "'Mukta', sans-serif" }}>
+              <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
+              <div style={{ color: '#888', fontSize: '1rem' }}>
+                {isHindi ? 'Is category mein abhi koi manufacturer nahi hai' : 'No manufacturers found in this category yet'}
+              </div>
+              <button
+                onClick={() => handleCategoryClick('All')}
+                style={{
+                  marginTop: '16px', background: '#1B3A6B', color: 'white',
+                  border: 'none', padding: '10px 24px', borderRadius: '8px',
+                  cursor: 'pointer', fontFamily: "'Mukta', sans-serif", fontWeight: 600
+                }}
+              >
+                {isHindi ? 'सभी देखें' : 'View All'}
+              </button>
             </div>
           ) : (
             <div style={{
@@ -325,7 +449,7 @@ export default function Home() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
               gap: '24px', marginBottom: '40px',
             }}>
-              {manufacturers.map((mfr, index) => (
+              {filteredManufacturers.map((mfr, index) => (
                 <div key={mfr.id} style={{
                   background: '#fff', borderRadius: '16px',
                   overflow: 'hidden',
@@ -420,11 +544,11 @@ export default function Home() {
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '32px' }}>
             {[
-              { num: '01', title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
-              { num: '02', title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
-              { num: '03', title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
+              { title: t('how.step1_title'), desc: t('how.step1_desc'), icon: '📝' },
+              { title: t('how.step2_title'), desc: t('how.step2_desc'), icon: '🤝' },
+              { title: t('how.step3_title'), desc: t('how.step3_desc'), icon: '💰' },
             ].map(step => (
-              <div key={step.num} style={{ background: '#fff', borderRadius: '16px', padding: '36px 28px', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', border: '1px solid rgba(27,58,107,0.08)', position: 'relative', overflow: 'hidden' }}>
+              <div key={step.title} style={{ background: '#fff', borderRadius: '16px', padding: '36px 28px', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', border: '1px solid rgba(27,58,107,0.08)' }}>
                 <div style={{ fontSize: '2.4rem', marginBottom: '16px' }}>{step.icon}</div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.3rem', color: '#1B3A6B', marginBottom: '10px' }}>{step.title}</h3>
                 <p style={{ color: '#555', lineHeight: 1.7, fontSize: '0.97rem' }}>{step.desc}</p>
@@ -514,7 +638,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHATSAPP FLOAT BUTTON */}
+      {/* WHATSAPP FLOAT */}
       <div
         onClick={() => window.open('https://wa.me/918225080825?text=Hello%20LoomLink!%20I%20want%20to%20know%20more.', '_blank')}
         style={{
