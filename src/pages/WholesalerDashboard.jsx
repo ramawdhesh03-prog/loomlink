@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useNavigate } from 'react-router-dom'
+import PlaceOrderModal from '../components/PlaceOrderModal'
 
 export default function WholesalerDashboard() {
   const [profile, setProfile] = useState(null)
@@ -9,6 +10,8 @@ export default function WholesalerDashboard() {
   const [editing, setEditing] = useState(false)
   const [form, setForm] = useState({})
   const [activeTab, setActiveTab] = useState('profile')
+  const [selectedMfg, setSelectedMfg] = useState(null)
+  const [orderSuccess, setOrderSuccess] = useState(false)
   const navigate = useNavigate()
 
   const SAREE_TYPES = [
@@ -209,18 +212,58 @@ export default function WholesalerDashboard() {
                   <div>📦 MOQ: {mfg.moq || '—'} pieces</div>
                   <div>💰 Price: {mfg.price_range || '—'}</div>
                 </div>
-                <a href={`https://wa.me/91${mfg.whatsapp || mfg.phone}?text=Hi%20${encodeURIComponent(mfg.business_name)}%2C%20I%20found%20you%20on%20LoomLink`} target="_blank" rel="noopener noreferrer" style={{
-                  display: 'block', background: '#25D366', color: 'white',
-                  textAlign: 'center', padding: '10px', borderRadius: '8px',
-                  textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem'
-                }}>
+                <a href={`https://wa.me/91${mfg.whatsapp || mfg.phone}?text=Hi%20${encodeURIComponent(mfg.business_name)}%2C%20I%20found%20you%20on%20LoomLink`}
+                  target="_blank" rel="noopener noreferrer" style={{
+                    display: 'block', background: '#25D366', color: 'white',
+                    textAlign: 'center', padding: '10px', borderRadius: '8px',
+                    textDecoration: 'none', fontWeight: 600, fontSize: '0.9rem'
+                  }}>
                   💬 WhatsApp pe Contact Karo
                 </a>
+                <button
+                  onClick={() => setSelectedMfg(mfg)}
+                  style={{
+                    display: 'block', width: '100%',
+                    background: '#1B3A6B', color: 'white',
+                    textAlign: 'center', padding: '10px', borderRadius: '8px',
+                    border: 'none', fontWeight: 600, fontSize: '0.9rem',
+                    cursor: 'pointer', marginTop: '8px',
+                    fontFamily: "'Mukta', sans-serif"
+                  }}
+                >
+                  📦 Order Place Karo
+                </button>
               </div>
             ))}
           </div>
         </div>
       )}
+
+      {selectedMfg && (
+        <PlaceOrderModal
+          manufacturer={selectedMfg}
+          onClose={() => setSelectedMfg(null)}
+          onSuccess={() => {
+            setSelectedMfg(null)
+            setOrderSuccess(true)
+            setTimeout(() => setOrderSuccess(false), 3000)
+          }}
+        />
+      )}
+
+      {orderSuccess && (
+        <div style={{
+          position: 'fixed', bottom: '24px', right: '24px',
+          background: '#2D7A4A', color: '#fff',
+          padding: '14px 22px', borderRadius: '12px',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+          zIndex: 9999, fontFamily: "'Mukta', sans-serif",
+          fontWeight: 600, fontSize: '0.95rem'
+        }}>
+          ✅ Order successfully place ho gaya!
+        </div>
+      )}
+
     </main>
   )
 }
