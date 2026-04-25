@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useNavigate } from 'react-router-dom'
 import PlaceOrderModal from '../components/PlaceOrderModal'
+import PaymentProofModal from '../components/PaymentProofModal'
 
 export default function WholesalerDashboard() {
   const [profile, setProfile] = useState(null)
@@ -13,6 +14,8 @@ export default function WholesalerDashboard() {
   const [selectedMfg, setSelectedMfg] = useState(null)
   const [orderSuccess, setOrderSuccess] = useState(false)
   const [orders, setOrders] = useState([])
+  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
   const navigate = useNavigate()
 
   const SAREE_TYPES = [
@@ -288,11 +291,34 @@ export default function WholesalerDashboard() {
                 </div>
               )}
 
+              {/* Payment Proof Status */}
+              {order.payment_submitted_at ? (
+                <div style={{
+                  marginTop: '12px', padding: '10px 14px',
+                  background: '#eef9ee', borderRadius: '8px',
+                  fontSize: '0.85rem', color: '#2D7A4A', fontWeight: 600
+                }}>
+                  ✅ Payment proof submitted — {formatDate(order.payment_submitted_at)}
+                  {order.utr_number && <span style={{ marginLeft: '8px', color: '#555', fontWeight: 400 }}>UTR: {order.utr_number}</span>}
+                </div>
+              ) : order.status === 'confirmed' && (
+                <button
+                  onClick={() => setSelectedOrder(order)}
+                  style={{
+                    marginTop: '12px', padding: '8px 18px',
+                    background: '#C9A84C', color: '#2D2D2D',
+                    border: 'none', borderRadius: '8px', cursor: 'pointer',
+                    fontFamily: "'Mukta', sans-serif", fontWeight: 600, fontSize: '0.85rem'
+                  }}>
+                  💳 Payment Proof Submit Karo
+                </button>
+              )}
+
               {order.manufacturer_whatsapp && (
                 <a href={`https://wa.me/91${order.manufacturer_whatsapp}?text=Hi%2C%20mera%20order%20LoomLink%20pe%20hai%2C%20status%20kya%20hai%3F`}
                   target="_blank" rel="noopener noreferrer"
                   style={{
-                    display: 'inline-block', marginTop: '12px',
+                    display: 'inline-block', marginTop: '12px', marginLeft: order.status === 'confirmed' && !order.payment_submitted_at ? '10px' : '0',
                     background: '#25D366', color: 'white',
                     padding: '8px 16px', borderRadius: '8px',
                     textDecoration: 'none', fontSize: '0.85rem', fontWeight: 600
@@ -354,8 +380,7 @@ export default function WholesalerDashboard() {
                     border: 'none', fontWeight: 600, fontSize: '0.9rem',
                     cursor: 'pointer', marginTop: '8px',
                     fontFamily: "'Mukta', sans-serif"
-                  }}
-                >
+                  }}>
                   📦 Order Place Karo
                 </button>
               </div>
@@ -371,8 +396,21 @@ export default function WholesalerDashboard() {
           onSuccess={() => {
             setSelectedMfg(null)
             setOrderSuccess(true)
-            fetchOrders(null)
+            supabase.auth.getUser().then(({ data: { user } }) => fetchOrders(user.id))
             setTimeout(() => setOrderSuccess(false), 3000)
+          }}
+        />
+      )}
+
+      {selectedOrder && (
+        <PaymentProofModal
+          order={selectedOrder}
+          onClose={() => setSelectedOrder(null)}
+          onSuccess={() => {
+            setSelectedOrder(null)
+            setPaymentSuccess(true)
+            supabase.auth.getUser().then(({ data: { user } }) => fetchOrders(user.id))
+            setTimeout(() => setPaymentSuccess(false), 3000)
           }}
         />
       )}
@@ -387,6 +425,19 @@ export default function WholesalerDashboard() {
           fontWeight: 600, fontSize: '0.95rem'
         }}>
           ✅ Order successfully place ho gaya!
+        </div>
+      )}
+
+      {paymentSuccess && (
+        <div style={{
+          position: 'fixed', bottom: '24px', right: '24px',
+          background: '#C9A84C', color: '#2D2D2D',
+          padding: '14px 22px', borderRadius: '12px',
+          boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
+          zIndex: 9999, fontFamily: "'Mukta', sans-serif",
+          fontWeight: 600, fontSize: '0.95rem'
+        }}>
+          💳 Payment proof submit ho gaya!
         </div>
       )}
 
